@@ -1,0 +1,109 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net6.0-windows</TargetFramework>
+    <OutputType>Library</OutputType>
+    <ExpressionBlendVersion>12.0.51020.0</ExpressionBlendVersion>
+    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
+    <RestorePackages>true</RestorePackages>
+    <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+    <UseWindowsForms>true</UseWindowsForms>
+    <UseWPF>true</UseWPF>
+    <ImportWindowsDesktopTargets>true</ImportWindowsDesktopTargets>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DefineConstants>TRACE;HIGH_QUALITY</DefineConstants>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Wurst|AnyCPU'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\Wurst\</OutputPath>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Wurst2|AnyCPU'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\Wurst2\</OutputPath>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Wurst3|AnyCPU'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\Wurst3\</OutputPath>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release2|AnyCPU'">
+    <OutputPath>bin\Release2\</OutputPath>
+    <Optimize>true</Optimize>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <ItemGroup>
+    <AppDesigner Include="Properties\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\DelVizDataStructure\DelVizDataStructure.csproj" />
+    <ProjectReference Include="..\EventHandling\EventHandling.csproj" />
+    <ProjectReference Include="..\library\src\Core\Common\Common.csproj" />
+    <ProjectReference Include="..\PhysicsSimulation\PhysicsSimulation.csproj" />
+    <ProjectReference Include="..\TextOnPathWPF\TextOnPathWPF.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\DelViz_Grafiken\ExampleResource.PNG">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Content Include="Resources\DelViz_Grafiken\0.PNG">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\DelViz_Grafiken\1.PNG">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\DelViz_Grafiken\2.PNG">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\DelViz_Grafiken\3.PNG">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\DelViz_Grafiken\4.PNG">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\DelViz_Grafiken\5.PNG">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\DelViz_Grafiken\6.PNG">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\DelViz_Grafiken\7.PNG">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\DelViz_Grafiken\8.PNG">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\DelViz_Grafiken\9.PNG">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Structure.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Structure02.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Structure03.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Structure04.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Microsoft.CSharp" Version="4.7.0" />
+    <PackageReference Include="System.Configuration.ConfigurationManager" Version="7.0.0" />
+    <PackageReference Include="System.ServiceModel.Primitives" Version="6.0.0" />
+    <PackageReference Include="System.ServiceModel.Http" Version="6.0.0" />
+    <PackageReference Include="System.ServiceModel.Duplex" Version="6.0.0" />
+    <PackageReference Include="System.ServiceModel.NetTcp" Version="6.0.0" />
+    <PackageReference Include="System.ServiceModel.Security" Version="6.0.0" />
+    <PackageReference Include="System.ServiceModel.Federation" Version="6.0.0" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="CalcBinding" Version="2.5.2" />
+    <PackageReference Include="DynamicExpresso.Core" Version="2.3.1" />
+    <PackageReference Include="NLog" Version="5.2.4" />
+    <PackageReference Include="Prism.Core" Version="8.1.97" />
+  </ItemGroup>
+</Project>

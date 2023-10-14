@@ -1,0 +1,69 @@
+﻿<UserControl x:Class="WPFPhysicsControlsLib.Controls.Benchmark"
+              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:viewModel="clr-namespace:WPFPhysicsControlsLib.ViewModel"
+             mc:Ignorable="d" 
+             d:DataContext="{d:DesignInstance viewModel:BenchmarkViewModel }"
+             Width="250" Height="340">
+    <StackPanel Margin="0,0,0,0">
+        <StackPanel Margin="20,0,20,10" Orientation="Horizontal">
+            <TextBlock Width="140" Text="Number of Tags:"/>
+            <TextBlock Text="{Binding NumTags, StringFormat=' {0}'}"/>
+        </StackPanel>
+        <StackPanel Margin="20,0,20,10" Orientation="Horizontal">
+            <TextBlock Width="140" Text="Number of Items:"/>
+            <TextBlock FontWeight="Bold" Text="{Binding NumEntities, StringFormat=' {0}'}"/>
+        </StackPanel>
+        <StackPanel Margin="20,0,20,10" Orientation="Horizontal">
+            <TextBlock Width="140" Text="Number of Lines:"/>
+            <TextBlock  FontWeight="Bold" Text="{Binding NumLines, StringFormat=' {0}'}"/>
+        </StackPanel>
+        <StackPanel Margin="20,0,20,10" Orientation="Horizontal">
+            <TextBlock Width="140" Text="Frame Time:"/>
+            <TextBlock FontWeight="Bold" Text="{Binding FrameTime, StringFormat=' {0:##.###} ms'}"/>
+        </StackPanel>
+        <StackPanel Margin="20,0,20,10" Orientation="Horizontal">
+            <TextBlock Width="140" Text="Average Frame Time:"/>
+            <TextBlock FontWeight="Bold" Text="{Binding AverageFrameTime, StringFormat=' {0:##.#} ms'}"/>
+        </StackPanel>
+        <StackPanel Margin="20,0,20,10" Orientation="Horizontal">
+            <TextBlock Width="140" Text="Frames per Second:"/>
+            <TextBlock FontWeight="Bold" Text="{Binding Fps, StringFormat=' {0:##} FPS'}"/>
+        </StackPanel>
+        <StackPanel Margin="20,0,20,10" Orientation="Horizontal">
+            <TextBlock Width="140" Text="Average Frames per Second:"/>
+            <TextBlock FontWeight="Bold" Text="{Binding AverageFps, StringFormat=' {0:##.#} FPS'}"/>
+        </StackPanel>
+        <StackPanel Margin="20,0,20,10" Orientation="Horizontal">
+            <TextBlock Width="140" Text="Tag creation Time:"/>
+            <TextBlock FontWeight="Bold" Text="{Binding CreateTags, StringFormat=' {0:##} ms'}"/>
+        </StackPanel>
+        <StackPanel Margin="20,0,20,10" Orientation="Horizontal">
+            <TextBlock Width="140" Text="Item creation Time:"/>
+            <TextBlock FontWeight="Bold" Text="{Binding CreateEntities, StringFormat=' {0:##} ms'}"/>
+        </StackPanel>
+        <StackPanel Margin="20,0,20,10" Orientation="Horizontal">
+            <TextBlock Width="140" Text="Line creation Time:"/>
+            <TextBlock FontWeight="Bold" Text="{Binding CreateLines, StringFormat=' {0:##} ms'}"/>
+        </StackPanel>
+        <StackPanel Margin="20,0,20,10" Orientation="Horizontal">
+            <TextBlock Width="140" Text="Layout update Time:"/>
+            <TextBlock FontWeight="Bold" Text="{Binding LayoutUpdate, StringFormat=' {0:##} ms'}"/>
+        </StackPanel>
+        <StackPanel Margin="20,0,20,10" Orientation="Horizontal">
+            <TextBlock Width="140" Text="Physics - Num Updates:"/>
+            <TextBlock FontWeight="Bold" Text="{Binding PhysicsNumIterations, StringFormat=' {0}'}"/>
+        </StackPanel>
+        <StackPanel Margin="20,0,20,10" Orientation="Horizontal">
+            <TextBlock Width="140" Text="Physics - Total Time:"/>
+            <TextBlock FontWeight="Bold" Text="{Binding PhysicsTotalTime, StringFormat=' {0} ms'}"/>
+        </StackPanel>
+        <StackPanel Margin="20,0,20,10" Orientation="Horizontal">
+            <TextBlock Width="140" Text="Physics - Average Time:"/>
+            <TextBlock FontWeight="Bold" Text="{Binding PhysicsAverageTime, StringFormat=' {0} ms'}"/>
+        </StackPanel>
+    </StackPanel>
+</UserControl>
+

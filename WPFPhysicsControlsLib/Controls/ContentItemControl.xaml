@@ -1,0 +1,167 @@
+﻿<UserControl x:Class="WPFPhysicsControlsLib.Controls.ContentItemControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:PresentationOptions="http://schemas.microsoft.com/winfx/2006/xaml/presentation/options"
+             mc:Ignorable="d" 
+             d:DesignHeight="20" d:DesignWidth="20">
+    <Viewbox>
+        <!-- <Ellipse Opacity="{Binding Transparency}">
+            <Ellipse.Fill>
+                <RadialGradientBrush>
+                    <GradientStopCollection>
+                        <GradientStop Color="#00000000" Offset="1"/>
+                        <GradientStop Color="{Binding ItemColor}" Offset="{Binding BlurRadius}"/>
+                    </GradientStopCollection>
+                </RadialGradientBrush>-->
+        <!--<SolidColorBrush Color="{Binding ItemColor}"></SolidColorBrush>-->
+        <!--     </Ellipse.Fill>
+            <Ellipse.RenderTransform>
+                <TranslateTransform X="{Binding TranslationX}" Y="{Binding TranslationY}"/>
+            </Ellipse.RenderTransform>
+        </Ellipse>
+        <Ellipse Opacity="{Binding ImgTransparency}" Margin="3">
+            <Ellipse.Fill>
+                <ImageBrush ImageSource="{Binding ImgSource}"/>
+            </Ellipse.Fill>
+            <Ellipse.RenderTransform>
+                <TranslateTransform X="{Binding TranslationX}" Y="{Binding TranslationY}"/>
+            </Ellipse.RenderTransform>
+        </Ellipse> -->
+        <Canvas x:Name="Entities_Design_exportUserControl" HorizontalAlignment="Left" Height="20" UseLayoutRounding="False" VerticalAlignment="Top" Width="20" Opacity="{Binding Transparency}">
+            <!-- <Path Data="M0.492,2.959C0.922,2.586 1.392,2.249 1.902,1.954 3.288,1.154 4.8,0.765 6.294,0.75" Height="3.525" Canvas.Left="3.961" Stroke="#FF00AD4A" StrokeThickness="1.5" Canvas.Top="-0.75" Width="6.302"/>
+            <Path Data="M0.74,5.387C1.044,3.576,1.898,1.868,3.231,0.53" Height="5.51" Canvas.Left="0.755" Stroke="#FF67D63E" StrokeThickness="1.5" Canvas.Top="2.116" Width="3.762"/>
+            <Path Data="M1.924,5.26C0.979,3.623,0.608,1.812,0.748,0.06" Height="5.635" Canvas.Left="0.652" Stroke="#FFCAE625" StrokeThickness="1.5" Canvas.Top="8.215" Width="2.573"/>
+            <Path Data="M5.07,4.158C4.668,3.998 4.272,3.807 3.884,3.584 2.498,2.783 1.406,1.669 0.646,0.382" Height="4.855" Canvas.Left="2.299" Stroke="#FF3360C2" StrokeThickness="1.5" Canvas.Top="13.862" Width="5.347"/>
+            <Path Data="M6.307,0.699C4.399,1.441,2.252,1.528,0.236,0.861" Height="2.058" Canvas.Left="7.628" Stroke="#FF4B98FF" StrokeThickness="1.5" Canvas.Top="17.338" Width="6.578"/>
+            <Path Data="M4.3,0.375C3.341,2.036,1.932,3.274,0.317,4.026" Height="4.706" Canvas.Left="14.155" Stroke="#FF53D1FF" StrokeThickness="1.5" Canvas.Top="13.783" Width="4.949"/> 
+            
+			<Path Data="M1.61,0.089C1.641,0.348 1.661,0.61 1.67,0.875 1.724,2.475 1.355,3.991 0.665,5.316" Height="5.663" Canvas.Left="18.205" Stroke="#FFE53722" StrokeThickness="1.5" Canvas.Top="8.172" Width="2.42"/>-->
+            <!--<Path Data="M0.524,0.536C1.836,1.821,2.755,3.506,3.085,5.393" Height="5.522" Canvas.Left="16.684" Stroke="#FFF8B118" StrokeThickness="1.5" Canvas.Top="2.11" Width="3.825"/> -->
+            <!--<Path Data="M0,0.75C2.215,0.75,4.242,1.551,5.808,2.88" Height="3.452" Canvas.Left="10.922" Stroke="#FFFFDD00" StrokeThickness="1.5" Canvas.Top="-0.671" Width="6.293"/> -->
+
+            <!-- 0 -->
+            <Path Stroke="#FFFFDD00" StrokeThickness="1.5" Opacity="{Binding Categories[0]}">
+                <Path.Data>
+                    <PathGeometry>
+                        <PathFigure StartPoint="10.922,0.079">
+                            <ArcSegment Size="10,10" SweepDirection="Clockwise" Point="16.726,2.21"/>
+                        </PathFigure>
+                    </PathGeometry>
+                </Path.Data>
+            </Path>
+
+            <!-- 1 -->
+            <Path Stroke="#FFF8B118" StrokeThickness="1.5" Opacity="{Binding Categories[1]}">
+                <Path.Data>
+                    <PathGeometry>
+                        <PathFigure StartPoint="17.208,2.646">
+                            <ArcSegment Size="10,10" SweepDirection="Clockwise" Point="19.769,7.503"/>
+                        </PathFigure>
+                    </PathGeometry>
+                </Path.Data>
+            </Path>
+
+            <!-- 2 -->
+            <Path Stroke="#FFE53722" StrokeThickness="1.5" Opacity="{Binding Categories[2]}">
+                <Path.Data>
+                    <PathGeometry>
+                        <PathFigure StartPoint="19.815,8.294">
+                            <ArcSegment Size="10,10" SweepDirection="Clockwise" Point="18.87,13.521"/>
+                        </PathFigure>
+                    </PathGeometry>
+                </Path.Data>
+            </Path>
+
+            <!-- 3 -->
+            <Path Stroke="#FF53D1FF" StrokeThickness="1.5" Opacity="{Binding Categories[3]}">
+                <Path.Data>
+                    <PathGeometry>
+                        <PathFigure StartPoint="18.455,14.158">
+                            <ArcSegment Size="10,10" SweepDirection="Clockwise" Point="14.472,17.809"/>
+                        </PathFigure>
+                    </PathGeometry>
+                </Path.Data>
+            </Path>
+
+            <!-- 4 -->
+            <Path Stroke="#FF4B98FF" StrokeThickness="1.5" Opacity="{Binding Categories[4]}">
+                <Path.Data>
+                    <PathGeometry>
+                        <PathFigure StartPoint="13.935,18.007">
+                            <ArcSegment Size="10,10" SweepDirection="Clockwise" Point="7.864,18.199"/>
+                        </PathFigure>
+                    </PathGeometry>
+                </Path.Data>
+            </Path>
+
+            <!-- 5 -->
+            <Path Stroke="#FF3360C2" StrokeThickness="1.5" Opacity="{Binding Categories[5]}">
+                <Path.Data>
+                    <PathGeometry>
+                        <PathFigure StartPoint="7.369,18.02">
+                            <ArcSegment Size="10,10" SweepDirection="Clockwise" Point="2.945,14.244"/>
+                        </PathFigure>
+                    </PathGeometry>
+                </Path.Data>
+            </Path>
+
+            <!-- 6 -->
+            <Path Stroke="#FFCAE625" StrokeThickness="1.5" Opacity="{Binding Categories[6]}">
+                <Path.Data>
+                    <PathGeometry>
+                        <PathFigure StartPoint="2.576,13.475">
+                            <ArcSegment Size="10,10" SweepDirection="Clockwise" Point="1.4,8.275"/>
+                        </PathFigure>
+                    </PathGeometry>
+                </Path.Data>
+            </Path>
+
+            <!-- 7 -->
+            <Path Stroke="#FF67D63E" StrokeThickness="1.5" Opacity="{Binding Categories[7]}">
+                <Path.Data>
+                    <PathGeometry>
+                        <PathFigure StartPoint="1.495,7.503">
+                            <ArcSegment Size="10,10" SweepDirection="Clockwise" Point="3.986,2.646"/>
+                        </PathFigure>
+                    </PathGeometry>
+                </Path.Data>
+            </Path>
+
+            <!-- 8 -->
+            <Path Stroke="#FF00AD4A" StrokeThickness="1.5" Opacity="{Binding Categories[8]}">
+                <Path.Data>
+                    <PathGeometry>
+                        <PathFigure StartPoint="4.453,2.209">
+                            <ArcSegment Size="10,10" SweepDirection="Clockwise" Point="10.255,0"/>
+                        </PathFigure>
+                    </PathGeometry>
+                </Path.Data>
+            </Path>
+
+            <Ellipse Opacity="{Binding ImgTransparency}" Height="15.642" Canvas.Left="2.74" Canvas.Top="1.456" Width="15.642">
+                <Ellipse.Fill>
+                    <ImageBrush ImageSource="{Binding ImgSource}"/>
+                </Ellipse.Fill>
+            </Ellipse>
+            <Ellipse Height="15.642" Canvas.Left="2.74" Canvas.Top="1.456" Width="15.642">
+                <Ellipse.Fill>
+                    <RadialGradientBrush Center="0.502,0.503" GradientOrigin="0.735,0.326" RadiusY="-0.485" RadiusX="-0.488" PresentationOptions:Freeze="True">
+                        <GradientStop Color="#99FFFFFF" Offset="0"/>
+                        <GradientStop Color="#99FFFFFF" Offset="0.064"/>
+                        <GradientStop Color="#73D7D7D6" Offset="0.264"/>
+                        <GradientStop Color="#4CA1A1A0" Offset="0.315"/>
+                        <GradientStop Color="#407C7C7B" Offset="0.506"/>
+                        <GradientStop Color="#333C3C3B" Offset="0.63"/>
+                        <GradientStop Color="#4C373736" Offset="0.911"/>
+                        <GradientStop Color="#99000000" Offset="0.961"/>
+                        <GradientStop Color="Black" Offset="1"/>
+                    </RadialGradientBrush>
+                </Ellipse.Fill>
+            </Ellipse>
+
+            <!--	<Path Data="M15.892,8.071C15.892,12.39 12.39,15.892 8.071,15.892 3.752,15.892 0.25,12.39 0.25,8.071 0.25,3.752 3.752,0.25 8.071,0.25 12.39,0.25 15.892,3.752 15.892,8.071z" Height="16.142" Canvas.Left="2.49" Stroke="Black" StrokeThickness="0.5" Canvas.Top="1.206" Width="16.142"/> -->
+        </Canvas>
+    </Viewbox>
+</UserControl>

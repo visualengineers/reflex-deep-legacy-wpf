@@ -1,0 +1,239 @@
+﻿<Window x:Class="WPFPhysicsControlsLib.Windows.DebugWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:converter="clr-namespace:WPFPhysicsControlsLib.Converter"
+        xmlns:utilities="clr-namespace:WPFPhysicsControlsLib.Utilities"
+        xmlns:viewModel="clr-namespace:WPFPhysicsControlsLib.ViewModel"
+        xmlns:controls="clr-namespace:WPFPhysicsControlsLib.Controls"
+        mc:Ignorable="d"
+        Title="DebugWindow" Height="950" Width="950" d:DataContext="{d:DesignInstance utilities:ViewModelLocator}"
+        BorderThickness="1"
+        BorderBrush="{StaticResource EmphasizedBrush}"
+        WindowStyle="None"
+        AllowsTransparency="True">
+    <Window.Resources>
+        <converter:FloatToStringConverter x:Key="FloatStrConv"/>
+    </Window.Resources>
+    <Grid Background="{StaticResource BackgroundBrush}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="20"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="330"/>
+            <ColumnDefinition/>
+            <ColumnDefinition Width="250"/>
+        </Grid.ColumnDefinitions>
+        <Border Background="{StaticResource BackgroundBrush}" Grid.ColumnSpan="2" MouseMove="DragWindow"/>
+        <Border Grid.Column="0" Grid.Row="1" Margin="0,0,0,20" BorderThickness="0,0,1,0" BorderBrush="{StaticResource BackgroundBrushLight}">
+            <StackPanel>
+                <TextBlock Style="{StaticResource HeadingTbStyle}">SETTINGS</TextBlock>
+                <StackPanel Margin="20, 0, 20,10" Orientation="Horizontal">
+                    <TextBlock Width="100" Text="Tag Force:"/>
+                    <Slider Width="100" Minimum="1" Interval="1" Maximum="50" Value="{Binding SimPropertiesVm.TagForce}"/>
+                    <TextBox Width="80" Margin="10,0"  Text="{Binding SimPropertiesVm.TagForce, Mode=TwoWay, Converter={StaticResource FloatStrConv}}"/>
+                </StackPanel>
+                <StackPanel Margin="20, 0, 20,10" Orientation="Horizontal">
+                    <TextBlock Width="100" Text="Object Force:"/>
+                    <Slider Width="100" Minimum="1" Interval="1" Maximum="5000" Value="{Binding SimPropertiesVm.ObjectForce}"/>
+                    <TextBox Width="80" Margin="10,0"  Text="{Binding SimPropertiesVm.ObjectForce, Mode=TwoWay, Converter={StaticResource FloatStrConv}}"/>
+                </StackPanel>
+                <StackPanel Margin="20,0, 20 ,10" Orientation="Horizontal">
+                    <TextBlock Width="100" Text="Boundary Force:"/>
+                    <Slider Width="100" Minimum="1" Maximum="500" Value="{Binding SimPropertiesVm.BoundaryForce}"/>
+                    <TextBox Width="80" Margin="10,0"  Text="{Binding SimPropertiesVm.BoundaryForce, Mode=TwoWay, Converter={StaticResource FloatStrConv}}"/>
+                </StackPanel>
+                <StackPanel Margin="20,0,20,10" Orientation="Horizontal">
+                    <TextBlock Width="100" Text="Force Ratio:"/>
+                    <TextBlock Text="{Binding SimPropertiesVm.ObjectToBoundaryForceRatio, Converter={StaticResource FloatStrConv}}" Width="50" Margin="0,0,60,0"/>
+                    <CheckBox IsChecked="{Binding SimPropertiesVm.IsForceRatioLocked}"></CheckBox>
+                    <TextBlock Margin="10,0" Text="Locked"/>
+                </StackPanel>
+                <StackPanel Margin="20, 0, 20,10" Orientation="Horizontal">
+                    <TextBlock Width="100" Text="Tag Item Repulsion:"/>
+                    <Slider Width="100" Minimum="1" Interval="1" Maximum="2000" Value="{Binding SimPropertiesVm.TagItemRepulsion}"/>
+                    <TextBox Width="80" Margin="10,0"  Text="{Binding SimPropertiesVm.TagItemRepulsion, Mode=TwoWay, Converter={StaticResource FloatStrConv}}"/>
+                </StackPanel>
+                <StackPanel Margin="20, 0, 20,10" Orientation="Horizontal">
+                    <TextBlock Width="100" Text="Tag Attraction Force:"/>
+                    <Slider Width="100" Minimum="1" Interval="1" Maximum="100" Value="{Binding SimPropertiesVm.StandardTagAttraction}"/>
+                    <TextBox Width="80" Margin="10,0"  Text="{Binding SimPropertiesVm.StandardTagAttraction, Mode=TwoWay, Converter={StaticResource FloatStrConv}}"/>
+                </StackPanel>
+                <StackPanel Margin="20, 0, 20,10" Orientation="Horizontal">
+                    <TextBlock Width="100" Text="Tag Repulsion Force:"/>
+                    <Slider Width="100" Minimum="1" Interval="1" Maximum="2000" Value="{Binding SimPropertiesVm.StandardTagRepulsion}"/>
+                    <TextBox Width="80" Margin="10,0"  Text="{Binding SimPropertiesVm.StandardTagRepulsion, Mode=TwoWay, Converter={StaticResource FloatStrConv}}"/>
+                </StackPanel>
+                <StackPanel Margin="20, 0, 20,10" Orientation="Horizontal">
+                    <TextBlock Width="100" Text="Same Dim Modifier:"/>
+                    <Slider Width="100" Minimum="1" Interval="1" Maximum="10" Value="{Binding SimPropertiesVm.TagSameDimensionForceModifier}"/>
+                    <TextBox Width="80" Margin="10,0"  Text="{Binding SimPropertiesVm.TagSameDimensionForceModifier, Mode=TwoWay, Converter={StaticResource FloatStrConv}}"/>
+                </StackPanel>
+                <StackPanel Margin="20, 0, 20,10" Orientation="Horizontal">
+                    <TextBlock Width="100" Text="Same Category Mod.:"/>
+                    <Slider Width="100" Minimum="1" Interval="1" Maximum="1000" Value="{Binding SimPropertiesVm.TagSameCategoryForceModifier}"/>
+                    <TextBox Width="80" Margin="10,0"  Text="{Binding SimPropertiesVm.TagSameCategoryForceModifier, Mode=TwoWay, Converter={StaticResource FloatStrConv}}"/>
+                </StackPanel>
+                <StackPanel Margin="20, 0, 20,10" Orientation="Horizontal">
+                    <TextBlock Width="100" Text="Centripetal Speed:"/>
+                    <Slider Width="100" Minimum="0" Interval="1" Maximum="100" Value="{Binding SimPropertiesVm.CentripetalSpeed}"/>
+                    <TextBox Width="80" Margin="10,0"  Text="{Binding SimPropertiesVm.CentripetalSpeed, Mode=TwoWay, Converter={StaticResource FloatStrConv}}"/>
+                </StackPanel>
+                <StackPanel Margin="20, 0, 20,10" Orientation="Horizontal">
+                    <TextBlock Width="100" Text="Item Canvas Width:"/>
+                    <Slider Width="100" Minimum="1" Interval="1" Maximum="4000" Value="{Binding SimPropertiesVm.ItemCanvasWidth}"/>
+                    <TextBox Width="80" Margin="10,0"  Text="{Binding SimPropertiesVm.ItemCanvasWidth, Mode=TwoWay, Converter={StaticResource FloatStrConv}}"/>
+                </StackPanel>
+                <StackPanel Margin="20, 0, 20,10" Orientation="Horizontal">
+                    <TextBlock Width="100" Text="Item Canvas Height:"/>
+                    <Slider Width="100" Minimum="1" Interval="1" Maximum="4000" Value="{Binding SimPropertiesVm.ItemCanvasHeight}"/>
+                    <TextBox Width="80" Margin="10,0"  Text="{Binding SimPropertiesVm.ItemCanvasHeight, Mode=TwoWay, Converter={StaticResource FloatStrConv}}"/>
+                </StackPanel>
+                <StackPanel Margin="20, 0, 20,10" Orientation="Horizontal">
+                    <TextBlock Width="100" Text="Tag Canvas Width:"/>
+                    <Slider Width="100" Minimum="1" Interval="1" Maximum="4000" Value="{Binding SimPropertiesVm.TagCanvasWidth}"/>
+                    <TextBox Width="80" Margin="10,0"  Text="{Binding SimPropertiesVm.TagCanvasWidth, Mode=TwoWay, Converter={StaticResource FloatStrConv}}"/>
+                </StackPanel>
+                <StackPanel Margin="20, 0, 20,10" Orientation="Horizontal">
+                    <TextBlock Width="100" Text="Tag Canvas Height:"/>
+                    <Slider Width="100" Minimum="1" Interval="1" Maximum="4000" Value="{Binding SimPropertiesVm.TagCanvasHeight}"/>
+                    <TextBox Width="80" Margin="10,0"  Text="{Binding SimPropertiesVm.TagCanvasHeight, Mode=TwoWay, Converter={StaticResource FloatStrConv}}"/>
+                </StackPanel>
+                <StackPanel Margin="20, 0, 20,10" Orientation="Horizontal">
+                    <TextBlock Width="100" Text="Item Force Field Size:"/>
+                    <Slider Width="100" Minimum="1" Interval="1" Maximum="100" Value="{Binding SimPropertiesVm.ItemForceFieldDiameter}"/>
+                    <TextBox Width="80" Margin="10,0"  Text="{Binding SimPropertiesVm.ItemForceFieldDiameter, Mode=TwoWay, Converter={StaticResource FloatStrConv}}"/>
+                </StackPanel>
+                <StackPanel Margin="20, 0, 20,10" Orientation="Horizontal">
+                    <TextBlock Width="100" Text="Item Collision Ratio:"/>
+                    <Slider Width="100" Minimum="1" Interval="1" Maximum="100" Value="{Binding SimPropertiesVm.ItemCollisionRatio}"/>
+                    <TextBox Width="80" Margin="10,0"  Text="{Binding SimPropertiesVm.ItemCollisionRatio, Mode=TwoWay}"/>
+                </StackPanel>
+                <StackPanel Margin="20, 0, 20,10" Orientation="Horizontal">
+                    <TextBlock Width="100" Text="Tag Force Field Size:"/>
+                    <Slider Width="100" Minimum="1" Interval="1" Maximum="1000" Value="{Binding SimPropertiesVm.TagForceFieldDiameter}"/>
+                    <TextBox Width="80" Margin="10,0"  Text="{Binding SimPropertiesVm.TagForceFieldDiameter, Mode=TwoWay, Converter={StaticResource FloatStrConv}}"/>
+                </StackPanel>
+                <StackPanel Margin="20, 0, 20,10" Orientation="Horizontal">
+                    <TextBlock Width="100" Text="Tag Collision Ratio:"/>
+                    <Slider Width="100" Minimum="1" Interval="1" Maximum="200" Value="{Binding SimPropertiesVm.TagCollisionRatio}"/>
+                    <TextBox Width="80" Margin="10,0"  Text="{Binding SimPropertiesVm.TagCollisionRatio, Mode=TwoWay}"/>
+                </StackPanel>
+                <StackPanel Margin="20, 0, 20,10" Orientation="Horizontal">
+                    <TextBlock Width="100" Text="Item Base Size:"/>
+                    <Slider Width="100" Minimum="1" Interval="1" Maximum="100" Value="{Binding SimPropertiesVm.ItemBaseSize}"/>
+                    <TextBox Width="80" Margin="10,0"  Text="{Binding SimPropertiesVm.ItemBaseSize, Mode=TwoWay, Converter={StaticResource FloatStrConv}}"/>
+                </StackPanel>
+                <StackPanel Margin="20, 0, 20,10" Orientation="Horizontal">
+                    <TextBlock Width="100" Text="Tag Base Size:"/>
+                    <Slider Width="100" Minimum="1" Interval="1" Maximum="200" Value="{Binding SimPropertiesVm.TagBaseSize}"/>
+                    <TextBox Width="80" Margin="10,0"  Text="{Binding SimPropertiesVm.TagBaseSize, Mode=TwoWay, Converter={StaticResource FloatStrConv}}"/>
+                </StackPanel>
+                <StackPanel Margin="20, 0, 20,10" Orientation="Horizontal">
+                    <TextBlock Width="100" Text="Max Deformation:"/>
+                    <Slider Width="100" Minimum="1" Interval="1" Maximum="20" Value="{Binding SimPropertiesVm.MaxUserInfluenceValue}"/>
+                    <TextBox Width="80" Margin="10,0"  Text="{Binding SimPropertiesVm.MaxUserInfluenceValue, Mode=TwoWay, Converter={StaticResource FloatStrConv}}"/>
+                </StackPanel>
+                <StackPanel Margin="20, 0, 20,10" Orientation="Horizontal">
+                    <TextBlock Width="100" Text="Selected Attraction:"/>
+                    <Slider Width="100" Minimum="1" Interval="1" Maximum="2000" Value="{Binding SimPropertiesVm.SelectedTagAttractionModifier}"/>
+                    <TextBox Width="80" Margin="10,0"  Text="{Binding SimPropertiesVm.SelectedTagAttractionModifier, Mode=TwoWay, Converter={StaticResource FloatStrConv}}"/>
+                </StackPanel>
+                <StackPanel Margin="20, 0, 20,10" Orientation="Horizontal">
+                    <CheckBox IsChecked="{Binding SimPropertiesVm.ComputeRepulsionModifierUnselectedTag}"/>
+                    <TextBlock Margin="10,0" Text="Compute Repulsion for unselected Tags"/>
+                </StackPanel>
+                <StackPanel Margin="20, 0, 20,10" Orientation="Horizontal">
+                    <TextBlock Width="100" Text="Unselected Repulsion:"/>
+                    <Slider Width="100" Minimum="1" Interval="1" Maximum="100" Value="{Binding SimPropertiesVm.UnselectedTagRepulsionModifier}" IsEnabled="{Binding SimPropertiesVm.ComputeRepulsionModifierUnselectedTag}"/>
+                    <TextBox Width="80" Margin="10,0"  Text="{Binding SimPropertiesVm.UnselectedTagRepulsionModifier, Mode=TwoWay, Converter={StaticResource FloatStrConv}}" IsEnabled="{Binding SimPropertiesVm.ComputeRepulsionModifierUnselectedTag}"/>
+                </StackPanel>
+                <StackPanel Margin="20, 0, 20,10" Orientation="Horizontal">
+                    <CheckBox IsChecked="{Binding SimPropertiesVm.DetectCollisions}"/>
+                    <TextBlock Margin="10,0" Text="Detect Collisions between Objects and Tags"/>
+                </StackPanel>
+                <StackPanel Margin="20, 0, 20,10" Orientation="Horizontal">
+                    <TextBlock Width="100" Text="Num Iterations:"/>
+                    <Slider Width="100" Minimum="1" Interval="1" Maximum="10" Value="{Binding SimPropertiesVm.CollisionDetectionIterations}" IsEnabled="{Binding SimPropertiesVm.DetectCollisions}"/>
+                    <TextBox Width="80" Margin="10,0"  Text="{Binding SimPropertiesVm.CollisionDetectionIterations, Mode=TwoWay}" IsEnabled="{Binding SimPropertiesVm.DetectCollisions}"/>
+                </StackPanel>
+                <StackPanel Margin="20,0, 20 ,10" Orientation="Horizontal">
+                    <TextBlock Width="100" Text="Timer Interval:"/>
+                    <Slider Width="100" Minimum="1" Maximum="2000" Value="{Binding SimPropertiesVm.SimulationInterval}"/>
+                    <TextBox Width="80" Margin="10,0"  Text="{Binding SimPropertiesVm.SimulationInterval, Mode=TwoWay}"/>
+                </StackPanel>
+                <StackPanel Margin="20,0,20,10" Orientation="Horizontal">
+                    <TextBlock Width="100" Text="TimeStamp:"/>
+                    <TextBlock Text="{Binding SimulationVm.SimulationTimeStamp}" Width="110"/>
+                    <CheckBox IsChecked="{Binding SimulationVm.ShowTouchPoints}"/>
+                    <TextBlock Margin="10,0" Text="DebugTPs"/>
+                </StackPanel>
+                <StackPanel Margin="20,0,20,10" Orientation="Horizontal">
+                    <Button Content="Reset Simulation" Width="100" Command="{Binding SimulationVm.RequestResetCommand}"/>
+                </StackPanel>
+            </StackPanel>
+        </Border>
+        <StackPanel Margin="0,0,0,40" Grid.Column="1" Grid.Row="1">
+            <TextBlock Style="{StaticResource HeadingTbStyle}">TAGS</TextBlock>
+            <ListView ItemsSource="{Binding SimulationVm.Tags}" Height="400">
+                <ListView.ItemTemplate>
+                    <DataTemplate DataType="viewModel:SimulatedTagVm">
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="{Binding Tag.Tag.Name}" Width="100" Margin="0,0,10,0"/>
+                            <TextBlock Text="["/>
+                            <TextBlock Text="{Binding TranslationX, Converter={StaticResource FloatStrConv}}" Width="45" TextAlignment="Right"/>
+                            <TextBlock Text="  | "/>
+                            <TextBlock Text="{Binding TranslationY, Converter={StaticResource FloatStrConv}}" Width="40" TextAlignment="Left"/>
+                            <TextBlock Text="]" Margin="0,0,10,0"/>
+                            <Button Margin="0,0,2,0" Width="12" Height="12" Content="+" Command="{Binding ModifyTagAttractionCmd}" CommandParameter="1"/>
+                            <Button Margin="0,0,10,0" Width="12" Height="12" Content="-" Command="{Binding ModifyTagAttractionCmd}" CommandParameter="-1"/>
+                            <TextBox Style="{StaticResource SmallTextBox}" Text="{Binding UserDefinedInfluence, Converter={StaticResource FloatStrConv}, Mode=TwoWay}"/>
+                        </StackPanel>
+                    </DataTemplate>
+
+                </ListView.ItemTemplate>
+            </ListView>
+            <TextBlock Style="{StaticResource HeadingTbStyle}">SELECTED ITEMS</TextBlock>
+            <ListView ItemsSource="{Binding SimulationVm.SelectedObjects}" Margin="20,0,20,0" Height="200">
+                <ListView.ItemTemplate>
+                    <DataTemplate DataType="viewModel:SimulatedContentItemVm">
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="{Binding Object.Id}" Width="50" Margin="0,0,10,0"/>
+                            <TextBlock Text="["/>
+                            <TextBlock Text="{Binding TranslationX, Converter={StaticResource FloatStrConv}}" Width="45" TextAlignment="Right"/>
+                            <TextBlock Text="  | "/>
+                            <TextBlock Text="{Binding TranslationY, Converter={StaticResource FloatStrConv}}" Width="40" TextAlignment="Left"/>
+                            <TextBlock Text="]" Margin="0,0,10,0"/>
+                            <Button Margin="0,0,2,0" Width="12" Height="12" Content="+" Command="{Binding ModifyItemInfluenceCmd}" CommandParameter="1"/>
+                            <Button Margin="0,0,10,0" Width="12" Height="12" Content="-" Command="{Binding ModifyItemInfluenceCmd}" CommandParameter="-1"/>
+                            <TextBlock Text="{Binding ItemSelectionAmount, Converter={StaticResource FloatStrConv}}"/>
+                        </StackPanel>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+            <StackPanel Orientation="Horizontal" Width="240">
+                <Button Margin="0,10,20,10" Content="Reset Tag Influences" Width="100" Command="{Binding SimulationVm.ResetTagInfluencesCmd}"/>
+                <Button Margin="20,10,0,10" Content="Reset Item Influences" Width="100" Command="{Binding SimulationVm.ResetContentItemInfluencesCmd}"/>
+            </StackPanel>
+        </StackPanel>
+        <Border Grid.Column="2" Grid.Row="1" Margin="0,0,0,20" BorderThickness="1,0,0,0" BorderBrush="{StaticResource BackgroundBrushLight}">
+            <StackPanel>
+                <TextBlock Style="{StaticResource HeadingTbStyle}">PERFORMANCE</TextBlock>
+                <controls:Benchmark DataContext="{Binding SimulationVm.BenchmarkVm}" VerticalAlignment="Top"/>
+                <TextBlock Style="{StaticResource HeadingTbStyle}">OPTIONS</TextBlock>
+                <StackPanel Margin="20, 0, 20,10" Orientation="Horizontal">
+                    <CheckBox IsChecked="{Binding SimPropertiesVm.EnforceEqualDataDistribution}"/>
+                    <TextBlock Margin="10,0" Text="Equal Tag-Item Distribution"/>
+                </StackPanel>
+                <StackPanel Margin="20, 0, 20,10" Orientation="Horizontal">
+                    <TextBlock Width="100" Text="Max Items / Tag:"/>
+                    <Slider Width="100" Minimum="1" Interval="1" Maximum="30" Value="{Binding SimPropertiesVm.MaxNumItemsPerTag}"/>
+                </StackPanel>
+                <TextBox Width="100" Margin="100,0,9,10" Text="{Binding SimPropertiesVm.MaxNumItemsPerTag, Mode=TwoWay}"/>
+                <Button Content="Reload Data" Margin="100,0,9,10" Width="100" Command="{Binding SimPropertiesVm.ReloadCommand}"/>
+            </StackPanel>
+        </Border>
+    </Grid>
+</Window>

@@ -10,11 +10,11 @@
         <Border Margin="0,25,0,0" Width="480" Height="660" BorderBrush="{DynamicResource SpecialColorBrush}" BorderThickness="1,2" Background="{DynamicResource BackgroundColorBrush}">
             <StackPanel Margin="20">
                 <StackPanel Orientation="Horizontal">
-                    <Label Style="{DynamicResource HeadingStyle}" FontSize="15" Foreground="{DynamicResource SpecialColorBrush}" Margin="0" Width="105">FlexiWallWPF</Label>
+                    <Label Style="{DynamicResource HeadingStyle}" FontSize="15" Foreground="{DynamicResource SpecialColorBrush}" Margin="0" Width="270">DEEP | Data Exploration on Elastic Projections</Label>
                     <Label Content="{Binding AppVersion}" Margin="10,4,0,0" FontSize="12"/>
                 </StackPanel>
-                <Label Margin="0,0,0,0">&#x00A9; 2013-2021 TU Dresden, Lehrstuhl Mediengestaltung &amp;</Label>
-                <Label Margin="61,0,0,20">GTV - Gesellschaft für Technische Visualistik mbH</Label>
+                <Label Margin="0,0,0,24">&#x00A9; 2013-2023 Mathias Müller, Thomas Gründer | TU Dresden, Lehrstuhl Mediengestaltung</Label>
+
                 <StackPanel Orientation="Horizontal" Margin="5,0">
                     <Label FontSize="14" Style="{DynamicResource TableLeftColumnStyle}" Width="20">+</Label>
                     <Label FontSize="14" Width="15">/</Label>

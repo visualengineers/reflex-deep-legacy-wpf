@@ -1,0 +1,290 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/DelVizWebService" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/DelVizWebService" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://141.76.66.11:8080/DelVizWebService.svc?xsd=xsd3" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+  <xs:complexType name="ArrayOfTag">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Tag" nillable="true" type="tns:Tag" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfTag" nillable="true" type="tns:ArrayOfTag" />
+  <xs:complexType name="Tag">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ID" type="xs:int" />
+      <xs:element minOccurs="0" name="Name_de" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Name_en" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Time" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="Description_en" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Description_de" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Image" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="UserID" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="Visualization_Tag" nillable="true" type="tns:ArrayOfVisualization_Tag">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="Bundle_Tag" nillable="true" type="tns:ArrayOfBundle_Tag">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Tag" nillable="true" type="tns:Tag" />
+  <xs:complexType name="ArrayOfVisualization_Tag">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Visualization_Tag" nillable="true" type="tns:Visualization_Tag" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfVisualization_Tag" nillable="true" type="tns:ArrayOfVisualization_Tag" />
+  <xs:complexType name="Visualization_Tag">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="VisualizationID" type="xs:int" />
+      <xs:element minOccurs="0" name="TagID" type="xs:int" />
+      <xs:element minOccurs="0" name="UserID" type="xs:int" />
+      <xs:element minOccurs="0" name="Time" type="xs:dateTime" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Visualization_Tag" nillable="true" type="tns:Visualization_Tag" />
+  <xs:complexType name="ArrayOfBundle_Tag">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Bundle_Tag" nillable="true" type="tns:Bundle_Tag" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfBundle_Tag" nillable="true" type="tns:ArrayOfBundle_Tag" />
+  <xs:complexType name="Bundle_Tag">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="BundleID" type="xs:int" />
+      <xs:element minOccurs="0" name="TagID" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Bundle_Tag" nillable="true" type="tns:Bundle_Tag" />
+  <xs:complexType name="ArrayOfVisualization">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Visualization" nillable="true" type="tns:Visualization" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfVisualization" nillable="true" type="tns:ArrayOfVisualization" />
+  <xs:complexType name="Visualization">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ID" type="xs:int" />
+      <xs:element minOccurs="0" name="Title" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="URL" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Description_en" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Description_de" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Image" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Time" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="UserID" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="Visualization_Tag" nillable="true" type="tns:ArrayOfVisualization_Tag">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Visualization" nillable="true" type="tns:Visualization" />
+  <xs:complexType name="ArrayOfVisualizationPreview">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="VisualizationPreview" nillable="true" type="tns:VisualizationPreview" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfVisualizationPreview" nillable="true" type="tns:ArrayOfVisualizationPreview" />
+  <xs:complexType name="VisualizationPreview">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ID" type="xs:int" />
+      <xs:element minOccurs="0" name="Image" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Title" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="VisualizationPreview" nillable="true" type="tns:VisualizationPreview" />
+  <xs:complexType name="ArrayOfTagBundleCategoryItem">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="TagBundleCategoryItem" nillable="true" type="tns:TagBundleCategoryItem" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfTagBundleCategoryItem" nillable="true" type="tns:ArrayOfTagBundleCategoryItem" />
+  <xs:complexType name="TagBundleCategoryItem">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Bundle" nillable="true" type="tns:Bundle" />
+      <xs:element minOccurs="0" name="Category" nillable="true" type="tns:Category" />
+      <xs:element minOccurs="0" name="Tag" nillable="true" type="tns:Tag" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="TagBundleCategoryItem" nillable="true" type="tns:TagBundleCategoryItem" />
+  <xs:complexType name="Bundle">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ID" type="xs:int" />
+      <xs:element minOccurs="0" name="Name_de" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Name_en" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="UserID" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="Description_en" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Description_de" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Image" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Time" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="Bundle_Category" nillable="true" type="tns:ArrayOfBundle_Category">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="Bundle_Tag" nillable="true" type="tns:ArrayOfBundle_Tag">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Bundle" nillable="true" type="tns:Bundle" />
+  <xs:complexType name="ArrayOfBundle_Category">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Bundle_Category" nillable="true" type="tns:Bundle_Category" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfBundle_Category" nillable="true" type="tns:ArrayOfBundle_Category" />
+  <xs:complexType name="Bundle_Category">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="BundleID" type="xs:int" />
+      <xs:element minOccurs="0" name="LayerID" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Bundle_Category" nillable="true" type="tns:Bundle_Category" />
+  <xs:complexType name="Category">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ID" type="xs:int" />
+      <xs:element minOccurs="0" name="Name_de" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Name_en" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="UserID" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="Time" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="Description_en" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Description_de" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Image" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Bundle_Category" nillable="true" type="tns:ArrayOfBundle_Category">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Category" nillable="true" type="tns:Category" />
+  <xs:complexType name="ArrayOfCategory">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Category" nillable="true" type="tns:Category" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfCategory" nillable="true" type="tns:ArrayOfCategory" />
+  <xs:complexType name="ArrayOfBundle">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Bundle" nillable="true" type="tns:Bundle" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfBundle" nillable="true" type="tns:ArrayOfBundle" />
+  <xs:complexType name="TagFilterExpression">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Condition" type="tns:TagFilterCondition" />
+      <xs:element minOccurs="0" name="TagID" type="xs:int" />
+      <xs:element minOccurs="0" name="TagName" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="TagFilterExpression" nillable="true" type="tns:TagFilterExpression" />
+  <xs:simpleType name="TagFilterCondition">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Include" />
+      <xs:enumeration value="Exclude" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="TagFilterCondition" nillable="true" type="tns:TagFilterCondition" />
+  <xs:complexType name="ArrayOfTagFilterExpression">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="TagFilterExpression" nillable="true" type="tns:TagFilterExpression" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfTagFilterExpression" nillable="true" type="tns:ArrayOfTagFilterExpression" />
+  <xs:complexType name="User">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ID" type="xs:int" />
+      <xs:element minOccurs="0" name="Username" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Password" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Email" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Active" type="xs:boolean" />
+      <xs:element minOccurs="0" name="Visualization_Tag" nillable="true" type="tns:ArrayOfVisualization_Tag">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="Category" nillable="true" type="tns:ArrayOfCategory">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="Tag" nillable="true" type="tns:ArrayOfTag">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="Visualization" nillable="true" type="tns:ArrayOfVisualization">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="Bundle" nillable="true" type="tns:ArrayOfBundle">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="User" nillable="true" type="tns:User" />
+  <xs:complexType name="ArrayOfUser">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="User" nillable="true" type="tns:User" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfUser" nillable="true" type="tns:ArrayOfUser" />
+  <xs:complexType name="TagFrequencyItem">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="IntersectionSetCount" type="xs:int" />
+      <xs:element minOccurs="0" name="UnionSetCount" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="TagFrequencyItem" nillable="true" type="tns:TagFrequencyItem" />
+  <xs:complexType name="ArrayOfHistoryItem">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="HistoryItem" nillable="true" type="tns:HistoryItem" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfHistoryItem" nillable="true" type="tns:ArrayOfHistoryItem" />
+  <xs:complexType name="HistoryItem">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="FilterExpression" nillable="true" type="tns:TagFilterExpression" />
+      <xs:element xmlns:q1="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="VisIDList" nillable="true" type="q1:ArrayOfint" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="HistoryItem" nillable="true" type="tns:HistoryItem" />
+  <xs:complexType name="BundleAndCategoryItem">
+    <xs:sequence>
+      <xs:element xmlns:q2="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="BundleIDList" nillable="true" type="q2:ArrayOfint" />
+      <xs:element xmlns:q3="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="CategoryIDList" nillable="true" type="q3:ArrayOfint" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="BundleAndCategoryItem" nillable="true" type="tns:BundleAndCategoryItem" />
+</xs:schema>

@@ -1,0 +1,550 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:system="clr-namespace:System;assembly=mscorlib"
+                    xmlns:presentationOptions="http://schemas.microsoft.com/winfx/2006/xaml/presentation/options"
+                    xmlns:converter="clr-namespace:WPFPhysicsControlsLib.Converter">
+
+    <BooleanToVisibilityConverter x:Key="BoolVisConv"/>
+    <converter:CategorySelectionVisibilityConverter x:Key="CategorySelectionConv"/>
+
+    <system:Double x:Key="DetailsPanelWidth">300</system:Double>
+    <system:Double x:Key="DetailsPanelHeight">450</system:Double>
+
+    <Color x:Key="01DataStructureColor">#FFCAE625</Color>
+    <Color x:Key="02DomainColor">#FF67D63E</Color>
+    <Color x:Key="03DataTypeColor">#FF00AD4A</Color>
+    <Color x:Key="04UpdateBehaviorColor">#FFE53722</Color>
+    <Color x:Key="05ElementsColor">#FFF8B118</Color>
+    <Color x:Key="06CompositionTypeColor">#FFFFDD00</Color>
+    <Color x:Key="07FunctionalityColor">#FF53D1FF</Color>
+    <Color x:Key="08InteractionTypeColor">#FF4B98FF</Color>
+    <Color x:Key="09InterfaceElementColor">#FF3360C2</Color>
+
+    <!--<SolidColorBrush x:Key="CategoriesUpdateBehaviorBrush" Color="{StaticResource 04UpdateBehaviorColor}"/>
+    <SolidColorBrush x:Key="CategoriesElementsBrush" Color="{StaticResource 05ElementsColor}"/>
+    <SolidColorBrush x:Key="CategoriesCompositionTypeBrush" Color="{StaticResource 06CompositionTypeColor}"/>
+    <SolidColorBrush x:Key="CategoriesDataStructureBrush" Color="{StaticResource 01DataStructureColor}"/>
+    <SolidColorBrush x:Key="CategoriesDomainBrush" Color="{StaticResource 02DomainColor}"/>
+    <SolidColorBrush x:Key="CategoriesDataTypeBrush" Color="{StaticResource 03DataTypeColor}"/>
+    <SolidColorBrush x:Key="CategoriesFunctionalityBrush" Color="{StaticResource 07FunctionalityColor}"/>
+    <SolidColorBrush x:Key="CategoriesInteractionTypeBrush" Color="{StaticResource 08InteractionTypeColor}"/>
+    <SolidColorBrush x:Key="CategoriesInterfaceElementBrush" Color="{StaticResource 09InterfaceElementColor}"/>-->
+
+    <SolidColorBrush x:Key="PhysicsSimCanvasBackground" Color="#FF000000" presentationOptions:Freeze="true"></SolidColorBrush>
+
+    <!-- Resources for DrawingVisuals -->
+
+    <SolidColorBrush x:Key="TagInactiveBorderBrush" Color="#59FFFFFF" presentationOptions:Freeze="true"/>
+    <SolidColorBrush x:Key="TagBackgroundBrush" Color="#DD000000" presentationOptions:Freeze="true"/>
+    <SolidColorBrush x:Key="TagDimensionNameBrush" Color="#FFAEAEAE" presentationOptions:Freeze="true"/>
+
+    <SolidColorBrush x:Key="WeakPenBrush" Color="#19FFFFFF" presentationOptions:Freeze="true"/>
+    <SolidColorBrush x:Key="NormalPenBrush" Color="#64FFFFFF" presentationOptions:Freeze="true"/>
+    <SolidColorBrush x:Key="StrongPenBrush" Color="#C8FFFFFF" presentationOptions:Freeze="true"/>
+
+    <system:Double x:Key="TagDefaultBorderThickness">3</system:Double>
+    <system:Double x:Key="TagEmphasizedBorderThickness">8</system:Double>
+    <system:Double x:Key="EntityBorderThickness">1.5</system:Double>
+
+    <system:Double x:Key="WeakPenThickness">1</system:Double>
+    <system:Double x:Key="NormalPenThickness">1.5</system:Double>
+    <system:Double x:Key="StrongPenThickness">3</system:Double>
+
+    <Pen x:Key="WeakPen" Thickness="{StaticResource WeakPenThickness}" Brush="{StaticResource WeakPenBrush}"  presentationOptions:Freeze="True"/>
+    <Pen x:Key="NormalPen" Thickness="{StaticResource NormalPenThickness}" Brush="{StaticResource NormalPenBrush}"  presentationOptions:Freeze="True"/>
+    <Pen x:Key="StrongPen" Thickness="{StaticResource StrongPenThickness}" Brush="{StaticResource StrongPenBrush}"  presentationOptions:Freeze="True"/>
+
+
+    <SolidColorBrush x:Key="CategoriesUpdateBehaviorBrush" Color="#FFFFDD00" presentationOptions:Freeze="True"/>
+    <SolidColorBrush x:Key="CategoriesElementsBrush" Color="#FFF8B118" presentationOptions:Freeze="True"/>
+    <SolidColorBrush x:Key="CategoriesCompositionTypeBrush" Color="#FFE53722" presentationOptions:Freeze="True"/>
+    <SolidColorBrush x:Key="CategoriesDataStructureBrush" Color="#FFCAE625" presentationOptions:Freeze="True"/>
+    <SolidColorBrush x:Key="CategoriesDomainBrush" Color="#FF67D63E" presentationOptions:Freeze="True"/>
+    <SolidColorBrush x:Key="CategoriesDataTypeBrush" Color="#FF00AD4A" presentationOptions:Freeze="True"/>
+    <SolidColorBrush x:Key="CategoriesFunctionalityBrush" Color="#FF53D1FF" presentationOptions:Freeze="True"/>
+    <SolidColorBrush x:Key="CategoriesInteractionTypeBrush" Color="#FF4B98FF" presentationOptions:Freeze="True"/>
+    <SolidColorBrush x:Key="CategoriesInterfaceElementBrush" Color="#FF3360C2" presentationOptions:Freeze="True"/>
+
+    <SolidColorBrush x:Key="CategoriesUpdateBehaviorBrushTransparent" Color="#50FFDD00" presentationOptions:Freeze="True"/>
+    <SolidColorBrush x:Key="CategoriesElementsBrushTransparent" Color="#50F8B118" presentationOptions:Freeze="True"/>
+    <SolidColorBrush x:Key="CategoriesCompositionTypeBrushTransparent" Color="#50E53722" presentationOptions:Freeze="True"/>
+    <SolidColorBrush x:Key="CategoriesDataStructureBrushTransparent" Color="#50CAE625" presentationOptions:Freeze="True"/>
+    <SolidColorBrush x:Key="CategoriesDomainBrushTransparent" Color="#5067D63E" presentationOptions:Freeze="True"/>
+    <SolidColorBrush x:Key="CategoriesDataTypeBrushTransparent" Color="#5000AD4A" presentationOptions:Freeze="True"/>
+    <SolidColorBrush x:Key="CategoriesFunctionalityBrushTransparent" Color="#5053D1FF" presentationOptions:Freeze="True"/>
+    <SolidColorBrush x:Key="CategoriesInteractionTypeBrushTransparent" Color="#504B98FF" presentationOptions:Freeze="True"/>
+    <SolidColorBrush x:Key="CategoriesInterfaceElementBrushTransparent" Color="#503360C2" presentationOptions:Freeze="True"/>
+
+    <ImageBrush x:Key="DummyImageBrush" ImageSource="pack://application:,,,/DelVizDataStructure;component/Resources/images_vic_group/mike-love.net_01.png" presentationOptions:Freeze="true"/>
+
+    <RadialGradientBrush x:Key="EntityOverlayBrush" Center="0.502, 0.503" GradientOrigin="0.735, 0.326" RadiusX="-0.485" RadiusY="-0.488" presentationOptions:Freeze="true">
+        <GradientStopCollection presentationOptions:Freeze="True">
+            <GradientStop Offset="0" Color="#99FFFFFF" presentationOptions:Freeze="true"/>
+            <GradientStop Offset="0.064" Color="#99FFFFFF" presentationOptions:Freeze="true"/>
+            <GradientStop Offset="0.264" Color="#73D7D7D7" presentationOptions:Freeze="true"/>
+            <GradientStop Offset="0.315" Color="#4CA1A1A1" presentationOptions:Freeze="true"/>
+            <GradientStop Offset="0.506" Color="#407C7C7C" presentationOptions:Freeze="true"/>
+            <GradientStop Offset="0.63" Color="#333C3C3C" presentationOptions:Freeze="true"/>
+            <GradientStop Offset="0.911" Color="#4C373737" presentationOptions:Freeze="true"/>
+            <GradientStop Offset="0.961" Color="#99000000" presentationOptions:Freeze="true"/>
+            <GradientStop Offset="1" Color="#FF000000" presentationOptions:Freeze="true"/>
+        </GradientStopCollection>
+    </RadialGradientBrush>
+
+    <RadialGradientBrush x:Key="BlurredEntityBrush" Center="0.5, 0.5" GradientOrigin="0.5, 0.5" RadiusX="0.5" RadiusY="0.5" presentationOptions:Freeze="true">
+        <GradientStopCollection presentationOptions:Freeze="True">
+            <GradientStop Offset="0" Color="#BBFFFFFF" presentationOptions:Freeze="true"/>
+            <GradientStop Offset="0.83" Color="#333C3C3C" presentationOptions:Freeze="true"/>
+            <GradientStop Offset="1" Color="#FF000000" presentationOptions:Freeze="true"/>
+        </GradientStopCollection>
+    </RadialGradientBrush>
+
+
+    <PathGeometry x:Key="EntityBorder01" presentationOptions:Freeze="true">
+        <PathFigure StartPoint="10.922,0.079" presentationOptions:Freeze="true">
+            <ArcSegment SweepDirection="Clockwise" Size="10,10" Point="16.730, 2.209" presentationOptions:Freeze="true"/>
+        </PathFigure>
+    </PathGeometry>
+    <PathGeometry x:Key="EntityBorder02" presentationOptions:Freeze="true">
+        <PathFigure StartPoint="17.208, 2.646" presentationOptions:Freeze="true">
+            <ArcSegment SweepDirection="Clockwise" Size="10,10" Point="19.769,  7.503" presentationOptions:Freeze="true"/>
+        </PathFigure>
+    </PathGeometry>
+    <PathGeometry x:Key="EntityBorder03" presentationOptions:Freeze="true">
+        <PathFigure StartPoint="19.815,  8.294" presentationOptions:Freeze="true">
+            <ArcSegment SweepDirection="Clockwise" Size="10,10" Point="18.870, 13.521" presentationOptions:Freeze="true"/>
+        </PathFigure>
+    </PathGeometry>
+    <PathGeometry x:Key="EntityBorder04" presentationOptions:Freeze="true">
+        <PathFigure StartPoint="18.455, 14.158" presentationOptions:Freeze="true">
+            <ArcSegment SweepDirection="Clockwise" Size="10,10" Point="14.472, 17.809" presentationOptions:Freeze="true"/>
+        </PathFigure>
+    </PathGeometry>
+    <PathGeometry x:Key="EntityBorder05" presentationOptions:Freeze="true">
+        <PathFigure StartPoint="13.935, 18.007" presentationOptions:Freeze="true">
+            <ArcSegment SweepDirection="Clockwise" Size="10,10" Point=" 7.864, 18.199" presentationOptions:Freeze="true"/>
+        </PathFigure>
+    </PathGeometry>
+    <PathGeometry x:Key="EntityBorder06" presentationOptions:Freeze="true">
+        <PathFigure StartPoint=" 7.369, 18.020" presentationOptions:Freeze="true">
+            <ArcSegment SweepDirection="Clockwise" Size="10,10" Point="2.945, 14.244" presentationOptions:Freeze="true"/>
+        </PathFigure>
+    </PathGeometry>
+    <PathGeometry x:Key="EntityBorder07" presentationOptions:Freeze="true">
+        <PathFigure StartPoint="2.576, 13.475" presentationOptions:Freeze="true">
+            <ArcSegment SweepDirection="Clockwise" Size="10,10" Point="1.400,  8.275" presentationOptions:Freeze="true"/>
+        </PathFigure>
+    </PathGeometry>
+    <PathGeometry x:Key="EntityBorder08" presentationOptions:Freeze="true">
+        <PathFigure StartPoint="1.495,  7.503" presentationOptions:Freeze="true">
+            <ArcSegment SweepDirection="Clockwise" Size="10,10" Point="3.986,  2.646" presentationOptions:Freeze="true"/>
+        </PathFigure>
+    </PathGeometry>
+    <PathGeometry x:Key="EntityBorder09" presentationOptions:Freeze="true">
+        <PathFigure StartPoint=" 4.453,  2.209" presentationOptions:Freeze="true">
+            <ArcSegment SweepDirection="Clockwise" Size="10,10" Point="10.255,  0.000" presentationOptions:Freeze="true"/>
+        </PathFigure>
+    </PathGeometry>
+
+    <EllipseGeometry x:Key="EntityGeometry" Center="10.561,9.277" RadiusX="7.821" RadiusY="7.821" presentationOptions:Freeze="true"/>
+
+    <GeometryDrawing x:Key="EntityBorderPath01Opaque" Geometry="{StaticResource EntityBorder01}" presentationOptions:Freeze="true">
+        <GeometryDrawing.Pen>
+            <Pen Brush="{StaticResource CategoriesUpdateBehaviorBrush}" Thickness="{StaticResource EntityBorderThickness}" presentationOptions:Freeze="true"/>
+        </GeometryDrawing.Pen>
+    </GeometryDrawing>
+    <GeometryDrawing x:Key="EntityBorderPath02Opaque" Geometry="{StaticResource EntityBorder02}" presentationOptions:Freeze="true">
+        <GeometryDrawing.Pen>
+            <Pen Brush="{StaticResource CategoriesElementsBrush}" Thickness="{StaticResource EntityBorderThickness}" presentationOptions:Freeze="true"/>
+        </GeometryDrawing.Pen>
+    </GeometryDrawing>
+    <GeometryDrawing x:Key="EntityBorderPath03Opaque" Geometry="{StaticResource EntityBorder03}" presentationOptions:Freeze="true">
+        <GeometryDrawing.Pen>
+            <Pen Brush="{StaticResource CategoriesCompositionTypeBrush}" Thickness="{StaticResource EntityBorderThickness}" presentationOptions:Freeze="true"/>
+        </GeometryDrawing.Pen>
+    </GeometryDrawing>
+    <GeometryDrawing x:Key="EntityBorderPath04Opaque" Geometry="{StaticResource EntityBorder04}" presentationOptions:Freeze="true">
+        <GeometryDrawing.Pen>
+            <Pen Brush="{StaticResource CategoriesFunctionalityBrush}" Thickness="{StaticResource EntityBorderThickness}" presentationOptions:Freeze="true"/>
+        </GeometryDrawing.Pen>
+    </GeometryDrawing>
+    <GeometryDrawing x:Key="EntityBorderPath05Opaque" Geometry="{StaticResource EntityBorder05}" presentationOptions:Freeze="true">
+        <GeometryDrawing.Pen>
+            <Pen Brush="{StaticResource CategoriesInteractionTypeBrush}" Thickness="{StaticResource EntityBorderThickness}" presentationOptions:Freeze="true"/>
+        </GeometryDrawing.Pen>
+    </GeometryDrawing>
+    <GeometryDrawing x:Key="EntityBorderPath06Opaque" Geometry="{StaticResource EntityBorder06}" presentationOptions:Freeze="true">
+        <GeometryDrawing.Pen>
+            <Pen Brush="{StaticResource CategoriesInterfaceElementBrush}" Thickness="{StaticResource EntityBorderThickness}" presentationOptions:Freeze="true"/>
+        </GeometryDrawing.Pen>
+    </GeometryDrawing>
+    <GeometryDrawing x:Key="EntityBorderPath07Opaque" Geometry="{StaticResource EntityBorder07}" presentationOptions:Freeze="true">
+        <GeometryDrawing.Pen>
+            <Pen Brush="{StaticResource CategoriesDataStructureBrush}" Thickness="{StaticResource EntityBorderThickness}" presentationOptions:Freeze="true"/>
+        </GeometryDrawing.Pen>
+    </GeometryDrawing>
+    <GeometryDrawing x:Key="EntityBorderPath08Opaque" Geometry="{StaticResource EntityBorder08}" presentationOptions:Freeze="true">
+        <GeometryDrawing.Pen>
+            <Pen Brush="{StaticResource CategoriesDomainBrush}" Thickness="{StaticResource EntityBorderThickness}" presentationOptions:Freeze="true"/>
+        </GeometryDrawing.Pen>
+    </GeometryDrawing>
+    <GeometryDrawing x:Key="EntityBorderPath09Opaque" Geometry="{StaticResource EntityBorder09}" presentationOptions:Freeze="true">
+        <GeometryDrawing.Pen>
+            <Pen Brush="{StaticResource CategoriesDataTypeBrush}" Thickness="{StaticResource EntityBorderThickness}" presentationOptions:Freeze="true"/>
+        </GeometryDrawing.Pen>
+    </GeometryDrawing>
+
+    <GeometryDrawing x:Key="EntityBorderPath01Transparent" Geometry="{StaticResource EntityBorder01}" presentationOptions:Freeze="true">
+        <GeometryDrawing.Pen>
+            <Pen Brush="{StaticResource CategoriesUpdateBehaviorBrushTransparent}" Thickness="{StaticResource EntityBorderThickness}" presentationOptions:Freeze="true"/>
+        </GeometryDrawing.Pen>
+    </GeometryDrawing>
+    <GeometryDrawing x:Key="EntityBorderPath02Transparent" Geometry="{StaticResource EntityBorder02}" presentationOptions:Freeze="true">
+        <GeometryDrawing.Pen>
+            <Pen Brush="{StaticResource CategoriesElementsBrushTransparent}" Thickness="{StaticResource EntityBorderThickness}" presentationOptions:Freeze="true"/>
+        </GeometryDrawing.Pen>
+    </GeometryDrawing>
+    <GeometryDrawing x:Key="EntityBorderPath03Transparent" Geometry="{StaticResource EntityBorder03}" presentationOptions:Freeze="true">
+        <GeometryDrawing.Pen>
+            <Pen Brush="{StaticResource CategoriesCompositionTypeBrushTransparent}" Thickness="{StaticResource EntityBorderThickness}" presentationOptions:Freeze="true"/>
+        </GeometryDrawing.Pen>
+    </GeometryDrawing>
+    <GeometryDrawing x:Key="EntityBorderPath04Transparent" Geometry="{StaticResource EntityBorder04}" presentationOptions:Freeze="true">
+        <GeometryDrawing.Pen>
+            <Pen Brush="{StaticResource CategoriesFunctionalityBrushTransparent}" Thickness="{StaticResource EntityBorderThickness}" presentationOptions:Freeze="true"/>
+        </GeometryDrawing.Pen>
+    </GeometryDrawing>
+    <GeometryDrawing x:Key="EntityBorderPath05Transparent" Geometry="{StaticResource EntityBorder05}" presentationOptions:Freeze="true">
+        <GeometryDrawing.Pen>
+            <Pen Brush="{StaticResource CategoriesInteractionTypeBrushTransparent}" Thickness="{StaticResource EntityBorderThickness}" presentationOptions:Freeze="true"/>
+        </GeometryDrawing.Pen>
+    </GeometryDrawing>
+    <GeometryDrawing x:Key="EntityBorderPath06Transparent" Geometry="{StaticResource EntityBorder06}" presentationOptions:Freeze="true">
+        <GeometryDrawing.Pen>
+            <Pen Brush="{StaticResource CategoriesInterfaceElementBrushTransparent}" Thickness="{StaticResource EntityBorderThickness}" presentationOptions:Freeze="true"/>
+        </GeometryDrawing.Pen>
+    </GeometryDrawing>
+    <GeometryDrawing x:Key="EntityBorderPath07Transparent" Geometry="{StaticResource EntityBorder07}" presentationOptions:Freeze="true">
+        <GeometryDrawing.Pen>
+            <Pen Brush="{StaticResource CategoriesDataStructureBrushTransparent}" Thickness="{StaticResource EntityBorderThickness}" presentationOptions:Freeze="true"/>
+        </GeometryDrawing.Pen>
+    </GeometryDrawing>
+    <GeometryDrawing x:Key="EntityBorderPath08Transparent" Geometry="{StaticResource EntityBorder08}" presentationOptions:Freeze="true">
+        <GeometryDrawing.Pen>
+            <Pen Brush="{StaticResource CategoriesDomainBrushTransparent}" Thickness="{StaticResource EntityBorderThickness}" presentationOptions:Freeze="true"/>
+        </GeometryDrawing.Pen>
+    </GeometryDrawing>
+    <GeometryDrawing x:Key="EntityBorderPath09Transparent" Geometry="{StaticResource EntityBorder09}" presentationOptions:Freeze="true">
+        <GeometryDrawing.Pen>
+            <Pen Brush="{StaticResource CategoriesDataTypeBrushTransparent}" Thickness="{StaticResource EntityBorderThickness}" presentationOptions:Freeze="true"/>
+        </GeometryDrawing.Pen>
+    </GeometryDrawing>
+
+    <GeometryDrawing x:Key="EntityOverlay" Geometry="{StaticResource EntityGeometry}" Brush="{StaticResource EntityOverlayBrush}" presentationOptions:Freeze="true"/>
+
+    <GeometryDrawing x:Key="DummyEntityGeometry" Geometry="{StaticResource EntityGeometry}" Brush="{StaticResource DummyImageBrush}" presentationOptions:Freeze="true"/>
+
+    <GeometryDrawing x:Key="BlurredItem" Geometry="{StaticResource EntityGeometry}" Brush="{StaticResource BlurredEntityBrush}" presentationOptions:Freeze="true"/>
+
+    <!-- Resources for DrawingVisuals END -->
+
+
+
+
+
+    <SolidColorBrush x:Key="SemiTranspWhiteBg" Color="#33FFFFFF"/>
+    <SolidColorBrush x:Key="BackgroundBrush" Color="#FF555555"/>
+    <SolidColorBrush x:Key="BackgroundBrushDark" Color="#FF444444"/>
+    <SolidColorBrush x:Key="EmphasizedBrush" Color="#FF4C9BD5"/>
+    <SolidColorBrush x:Key="BackgroundBrushLight" Color="#FF666666"/>
+    <SolidColorBrush x:Key="DisabledBrush" Color="#FF888888"/>
+    <SolidColorBrush x:Key="FontColorBrush" Color="#FFBBBBBB"/>
+    <SolidColorBrush x:Key="HeadingFontColorBrush" Color="#FFFFFFFF"/>
+    <FontFamily x:Key="DefaultFont">Arial Narrow</FontFamily>
+    <system:Double x:Key="DefaultFontSize">11</system:Double>
+    <Style TargetType="TextBlock">
+        <Setter Property="VerticalAlignment" Value="Center"/>
+        <Setter Property="FontFamily" Value="{StaticResource DefaultFont}"></Setter>
+        <Setter Property="Foreground" Value="{StaticResource FontColorBrush}"/>
+    </Style>
+
+    <Style TargetType="TextBlock" BasedOn="{StaticResource {x:Type TextBlock}}" x:Key="HeadingTbStyle">
+        <Setter Property="Foreground" Value="{StaticResource HeadingFontColorBrush}"/>
+        <Setter Property="OverridesDefaultStyle" Value="True"/>
+        <Setter Property="HorizontalAlignment" Value="Center"/>
+        <Setter Property="FontWeight" Value="Bold"/>
+        <Setter Property="Margin" Value="20,18,20,18"/>
+        <Setter Property="FontSize" Value="16"/>
+    </Style>
+    <Style TargetType="Label">
+        <Setter Property="VerticalAlignment" Value="Center"/>
+        <Setter Property="FontFamily" Value="{StaticResource DefaultFont}"></Setter>
+    </Style>
+    <Style TargetType="{x:Type Button}">
+        <Setter Property="OverridesDefaultStyle" Value="True"/>
+        <Setter Property="Background" Value="{StaticResource BackgroundBrushDark}"/>
+        <Setter Property="Foreground" Value="{StaticResource EmphasizedBrush}"/>
+        <Setter Property="FontFamily" Value="{StaticResource DefaultFont}"/>
+        <Setter Property="FontSize" Value="{StaticResource DefaultFontSize}"/>
+        <Setter Property="BorderBrush" Value="{StaticResource BackgroundBrushLight}"/>
+        <Setter Property="BorderThickness" Value="1"/>
+        <Setter Property="Height" Value="20"/>
+        <Setter Property="Width" Value="110"/>
+        <Setter Property="HorizontalAlignment" Value="Center"/>
+        <Setter Property="VerticalAlignment" Value="Center"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <Border Background="{TemplateBinding Background}" BorderThickness="{TemplateBinding BorderThickness}" BorderBrush="{TemplateBinding BorderBrush}">
+                        <ContentPresenter x:Name="CtPresenter" Content="{TemplateBinding Content}" HorizontalAlignment="{TemplateBinding HorizontalAlignment}" Margin="{TemplateBinding Padding}" RecognizesAccessKey="True" VerticalAlignment="{TemplateBinding VerticalAlignment}"/>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="BorderBrush" Value="{StaticResource EmphasizedBrush}"/>
+                        </Trigger>
+                        <Trigger Property="IsPressed" Value="True">
+                            <Setter Property="Background" Value="{StaticResource EmphasizedBrush}"/>
+                            <Setter Property="Foreground" Value="{StaticResource FontColorBrush}"/>
+                        </Trigger>
+                        <Trigger Property="IsEnabled" Value="False">
+                            <Setter Property="Background" Value="{StaticResource DisabledBrush}"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style TargetType="{x:Type TextBox}">
+        <Setter Property="OverridesDefaultStyle" Value="True"/>
+        <Setter Property="FontFamily" Value="{StaticResource DefaultFont}"/>
+        <Setter Property="FontSize" Value="{StaticResource DefaultFontSize}"/>
+        <Setter Property="Width" Value="80"/>
+        <Setter Property="Height" Value="18"/>
+        <Setter Property="Foreground" Value="{StaticResource FontColorBrush}"/>
+        <Setter Property="Background" Value="{StaticResource BackgroundBrushLight}"/>
+        <Setter Property="BorderBrush" Value="{StaticResource FontColorBrush}"/>
+        <Setter Property="BorderThickness" Value="0"/>
+        <Setter Property="Padding" Value="2,3"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type TextBoxBase}">
+                    <Border x:Name="Bd" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" SnapsToDevicePixels="True">
+                        <ScrollViewer x:Name="PART_ContentHost" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"/>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style TargetType="{x:Type TextBox}" x:Key="SmallTextBox" BasedOn="{StaticResource {x:Type TextBox}}">
+        <Setter Property="Width" Value="50"/>
+        <Setter Property="Height" Value="14"/>
+        <Setter Property="Padding" Value="1"/>
+        <Setter Property="TextAlignment" Value="Center"/>
+    </Style>
+
+    <!-- CheckBox-Style -->
+
+    <Style x:Key="EmptyCheckBoxFocusVisual">
+        <Setter Property="Control.Template">
+            <Setter.Value>
+                <ControlTemplate>
+                    <Rectangle StrokeDashArray="1 2" StrokeThickness="1" Stroke="{DynamicResource EmphasizedLabelForeGround}" SnapsToDevicePixels="true" Margin="1,1,11,1"/>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    <Style x:Key="CheckRadioFocusVisual">
+        <Setter Property="Control.Template">
+            <Setter.Value>
+                <ControlTemplate>
+                    <Rectangle StrokeDashArray="1 2" StrokeThickness="1" Stroke="{DynamicResource EmphasizedLabelForeGround}" SnapsToDevicePixels="true" Margin="14,0,0,0"/>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    <Style TargetType="{x:Type CheckBox}">
+        <Setter Property="Foreground" Value="{StaticResource EmphasizedBrush}"/>
+        <Setter Property="Background" Value="{StaticResource BackgroundBrush}"/>
+        <Setter Property="BorderBrush" Value="{StaticResource FontColorBrush}"/>
+        <Setter Property="BorderThickness" Value="1"/>
+        <Setter Property="FocusVisualStyle" Value="{StaticResource EmptyCheckBoxFocusVisual}"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type CheckBox}">
+                    <StackPanel Orientation="Horizontal">
+                        <Grid Width="16" Height="16" Margin="0,0,10,0">
+                            <Rectangle StrokeThickness="1" Stroke="{TemplateBinding BorderBrush}" Fill="{TemplateBinding Background}" Height="14" Width="14" />
+                            <Rectangle x:Name="CheckerIcon" Fill="{TemplateBinding Foreground}" Width="8" Height="8" Margin="2" Visibility="Collapsed"/>
+                        </Grid>
+                        <ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="{TemplateBinding Padding}" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                    </StackPanel>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="HasContent" Value="true">
+                            <Setter Property="FocusVisualStyle" Value="{StaticResource CheckRadioFocusVisual}"/>
+                            <Setter Property="Padding" Value="4,0,0,0"/>
+                        </Trigger>
+                        <Trigger Property="IsChecked" Value="True">
+                            <Setter Property="Visibility" Value="Visible" TargetName="CheckerIcon"/>
+                        </Trigger>
+                        <Trigger Property="IsEnabled" Value="false">
+                            <Setter Property="BorderBrush" Value="{StaticResource BackgroundBrushLight}"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <!-- Slider Style -->
+
+    <Style TargetType="{x:Type Slider}">
+        <Setter Property="Stylus.IsPressAndHoldEnabled" Value="False"/>
+        <Setter Property="Background" Value="Transparent"/>
+        <Setter Property="Foreground" Value="{StaticResource FontColorBrush}"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Slider}">
+                    <Border BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" SnapsToDevicePixels="True">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto" MinHeight="{TemplateBinding MinHeight}"/>
+                                <RowDefinition Height="Auto"/>
+                            </Grid.RowDefinitions>
+                            <TickBar x:Name="TopTick" Fill="{TemplateBinding Foreground}" Height="4" Placement="Top" Grid.Row="0" Visibility="Collapsed"/>
+                            <TickBar x:Name="BottomTick" Fill="{TemplateBinding Foreground}" Height="4" Placement="Bottom" Grid.Row="2" Visibility="Collapsed"/>
+                            <Border x:Name="TrackBackground" BorderThickness="1" Background="{DynamicResource BackgroundColorBrush}" CornerRadius="0" Height="4" Margin="5,0" Grid.Row="1" VerticalAlignment="Center" BorderBrush="{DynamicResource FontColorBrush}">
+                                <Canvas Margin="-6,-1">
+                                    <Rectangle x:Name="PART_SelectionRange" Fill="{DynamicResource HighlightColorBrush}" Height="4" Stroke="{DynamicResource FontColorBrush}" StrokeThickness="1" Visibility="Hidden"/>
+                                </Canvas>
+                            </Border>
+                            <Track x:Name="PART_Track" Grid.Row="1">
+                                <Track.DecreaseRepeatButton>
+                                    <RepeatButton Command="Slider.DecreaseLarge">
+                                        <RepeatButton.Style>
+                                            <Style TargetType="{x:Type RepeatButton}">
+                                                <Setter Property="OverridesDefaultStyle" Value="True"/>
+                                                <Setter Property="IsTabStop" Value="False"/>
+                                                <Setter Property="Focusable" Value="False"/>
+                                                <Setter Property="Template">
+                                                    <Setter.Value>
+                                                        <ControlTemplate TargetType="{x:Type RepeatButton}">
+                                                            <Rectangle Fill="Transparent"/>
+                                                        </ControlTemplate>
+                                                    </Setter.Value>
+                                                </Setter>
+                                            </Style>
+                                        </RepeatButton.Style>
+                                    </RepeatButton>
+                                </Track.DecreaseRepeatButton>
+                                <Track.IncreaseRepeatButton>
+                                    <RepeatButton Command="Slider.IncreaseLarge">
+                                        <RepeatButton.Style>
+                                            <Style TargetType="{x:Type RepeatButton}">
+                                                <Setter Property="OverridesDefaultStyle" Value="True"/>
+                                                <Setter Property="IsTabStop" Value="False"/>
+                                                <Setter Property="Focusable" Value="False"/>
+                                                <Setter Property="Template">
+                                                    <Setter.Value>
+                                                        <ControlTemplate TargetType="{x:Type RepeatButton}">
+                                                            <Rectangle Fill="Transparent"/>
+                                                        </ControlTemplate>
+                                                    </Setter.Value>
+                                                </Setter>
+                                            </Style>
+                                        </RepeatButton.Style>
+                                    </RepeatButton>
+                                </Track.IncreaseRepeatButton>
+                                <Track.Thumb>
+                                    <Thumb x:Name="Thumb">
+                                        <Thumb.Style>
+                                            <Style TargetType="{x:Type Thumb}">
+                                                <Setter Property="Focusable" Value="False"/>
+                                                <Setter Property="OverridesDefaultStyle" Value="True"/>
+                                                <Setter Property="Height" Value="20"/>
+                                                <Setter Property="Width" Value="11"/>
+                                                <Setter Property="Foreground" Value="{StaticResource FontColorBrush}"/>
+                                                <Setter Property="Template">
+                                                    <Setter.Value>
+                                                        <ControlTemplate TargetType="{x:Type Thumb}">
+                                                            <Canvas SnapsToDevicePixels="True">
+                                                                <Rectangle x:Name="Background" Fill="{StaticResource FontColorBrush}" Width="9" Height="22"/>
+                                                            </Canvas>
+                                                            <ControlTemplate.Triggers>
+                                                                <Trigger Property="IsMouseOver" Value="True">
+                                                                    <Setter Property="Fill" TargetName="Background" Value="{StaticResource BackgroundBrushDark}"/>
+                                                                </Trigger>
+                                                                <Trigger Property="IsDragging" Value="True">
+                                                                    <Setter Property="Fill" TargetName="Background" Value="{StaticResource EmphasizedBrush}"/>
+                                                                </Trigger>
+                                                                <Trigger Property="IsEnabled" Value="False">
+                                                                    <Setter Property="Fill" TargetName="Background" Value="{StaticResource DisabledBrush}"/>
+                                                                </Trigger>
+                                                            </ControlTemplate.Triggers>
+                                                        </ControlTemplate>
+                                                    </Setter.Value>
+                                                </Setter>
+                                            </Style>
+                                        </Thumb.Style>
+                                    </Thumb>
+                                </Track.Thumb>
+                            </Track>
+                        </Grid>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsSelectionRangeEnabled" Value="True">
+                            <Setter Property="Visibility" TargetName="PART_SelectionRange" Value="Visible"/>
+                        </Trigger>
+                        <Trigger Property="IsKeyboardFocused" Value="True">
+                            <Setter Property="Foreground" TargetName="Thumb" Value="Blue"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style TargetType="{x:Type ListView}">
+        <Setter Property="BorderThickness" Value="0,1"/>
+        <Setter Property="BorderBrush" Value="{StaticResource DisabledBrush}"/>
+        <Setter Property="Background" Value="{StaticResource BackgroundBrush}"/>
+        <Setter Property="Foreground" Value="{StaticResource FontColorBrush}"/>
+        <Setter Property="Margin" Value="20,0"/>
+        <Setter Property="Padding" Value="0,10"/>
+        <Setter Property="ScrollViewer.HorizontalScrollBarVisibility" Value="Disabled"/>
+        <Setter Property="ScrollViewer.VerticalScrollBarVisibility" Value="Disabled"/>
+    </Style>
+
+    <!-- ListViewItem Style  -->
+    <Style TargetType="{x:Type ListViewItem}">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type ListViewItem}">
+                    <Border x:Name="Bd" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" Padding="{TemplateBinding Padding}" SnapsToDevicePixels="true">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="8"/>
+                                <ColumnDefinition/>
+                                <ColumnDefinition Width="5"/>
+                            </Grid.ColumnDefinitions>
+                            <Rectangle HorizontalAlignment="Left" x:Name="Rect" Width="5" Height="5" Fill="{StaticResource EmphasizedBrush}" Visibility="Hidden"/>
+                            <ContentPresenter Grid.Column="1" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                        </Grid>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsSelected" Value="true">
+                            <Setter Property="Visibility" TargetName="Rect" Value="Visible"/>
+                        </Trigger>
+                        <Trigger Property="IsEnabled" Value="false">
+                            <Setter Property="Foreground" Value="{StaticResource BackgroundBrushLight}"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+
+    </Style>
+
+</ResourceDictionary>

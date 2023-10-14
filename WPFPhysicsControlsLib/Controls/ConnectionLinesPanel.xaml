@@ -1,0 +1,32 @@
+﻿<UserControl x:Class="WPFPhysicsControlsLib.Controls.ConnectionLinesPanel"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:utilities="clr-namespace:WPFPhysicsControlsLib.Utilities"
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="300" d:DataContext="{d:DesignInstance utilities:ViewModelLocator}">
+    <Grid>
+        <ItemsControl ItemsSource="{Binding SimulationVm.DetailsVm.ConnectionLines}">
+            <ItemsControl.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <Canvas/>
+                </ItemsPanelTemplate>
+            </ItemsControl.ItemsPanel>
+            <ItemsControl.ItemTemplate>
+                <DataTemplate>
+                    <Path Stroke="White" StrokeThickness="4">
+                        <Path.Data>
+                            <PathGeometry>
+                                <PathFigure StartPoint="{Binding Item1}">
+                                   <BezierSegment Point1="{Binding Item2}" Point2="{Binding Item3}" Point3="{Binding Item4}"/>
+                                </PathFigure>
+                            </PathGeometry>
+                        </Path.Data>
+                    </Path>
+                    <!--<Line StrokeThickness="1" Stroke="White" X1="{Binding Item1.X}" X2="{Binding Item2.X}" Y1="{Binding Item1.Y}" Y2 ="{Binding Item2.Y}"/>-->
+                </DataTemplate>
+            </ItemsControl.ItemTemplate>
+        </ItemsControl>
+    </Grid>
+</UserControl>

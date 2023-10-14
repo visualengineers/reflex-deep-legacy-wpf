@@ -4,9 +4,15 @@ Conversion of the legacy WPF application for xCoAx 2015 Paper "Data Exploration 
 
 * Version: 2.3.0.0
 * ReFlex-Version: 0.9.8
-* Websocket-Address (default, can be configured in `appsettings`): `ws://127.,0.0.1:40001/ReFlex`
+* Websocket-Address (default, can be configured in `appsettings`): `ws://127.0.0.1:40001/ReFlex`
 
-## change WebSWocket Address
+![App Screenshot](docs/img/example.png)
+
+## Prerequisites
+
+.NET 6.0 [Download](https://dotnet.microsoft.com/en-us/download/dotnet/6.0)
+
+## Change WebSocket Address
 
 edit `App.config` (in project) or `DeeP.dll.config` (in compiled project) and edit the lines: 
 
@@ -22,3 +28,7 @@ edit `App.config` (in project) or `DeeP.dll.config` (in compiled project) and ed
       <value>ReFlex</value>
     </setting>
 ```
+
+## ReFlex usage
+
+* the source files from [ReFlex Framework](https://github.com/visualengineers/reflex) are copied into `library/src/Core/Common` and `library/src/Core/Networking` (from [Version 0.9.8](https://github.com/visualengineers/reflex/releases/tag/v0.9.8))

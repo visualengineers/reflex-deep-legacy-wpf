@@ -4,13 +4,13 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Windows;
 using System.Windows.Threading;
-using DeeP.Commands;
 using EventHandling;
 using NLog;
 using Prism.Events;
 using Prism.Mvvm;
+using ReFlex.Apps.DeeP.Commands;
 
-namespace DeeP.ViewModel
+namespace ReFlex.Apps.DeeP.ViewModel
 {
     public class LogViewModel : BindableBase
     {

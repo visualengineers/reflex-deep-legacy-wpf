@@ -1,10 +1,9 @@
-﻿using System;
-using System.Windows;
+﻿using System.Windows;
 using Prism.Mvvm;
 using ReFlex.Core.Common.Components;
 using Math = System.Math;
 
-namespace DeeP.ViewModel
+namespace ReFlex.Apps.DeeP.ViewModel
 {
     public class TouchPointElementViewModel : BindableBase
     {

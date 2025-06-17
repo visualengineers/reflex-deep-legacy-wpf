@@ -1,12 +1,11 @@
 ﻿using System;
 using DeeP.Properties;
-using DeeP.ViewModel;
-using DeeP.Util;
 using NLog;
 using PhysicsSimulation.Model;
 using Prism.Commands;
+using ReFlex.Apps.DeeP.ViewModel;
 
-namespace DeeP.Commands
+namespace ReFlex.Apps.DeeP.Commands
 {
     public class SaveDefaultSettingsCommand : DelegateCommand<string>
     {

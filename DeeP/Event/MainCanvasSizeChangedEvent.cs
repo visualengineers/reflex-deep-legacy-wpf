@@ -1,7 +1,7 @@
 ﻿using System.Windows;
 using Prism.Events;
 
-namespace DeeP.Event
+namespace ReFlex.Apps.DeeP.Event
 {
     public class MainCanvasSizeChangedEvent : PubSubEvent<Size>
     {

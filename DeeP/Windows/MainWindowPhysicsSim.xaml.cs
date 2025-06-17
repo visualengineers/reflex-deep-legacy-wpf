@@ -1,13 +1,13 @@
 ﻿using System.Windows;
 using System.Windows.Input;
-using DeeP.Event;
-using DeeP.ViewModel;
 using NLog;
 using Prism.Events;
 using Prism.Ioc;
+using ReFlex.Apps.DeeP.Event;
+using ReFlex.Apps.DeeP.ViewModel;
 using WPFPhysicsControlsLib.Utilities;
 
-namespace DeeP.Windows
+namespace ReFlex.Apps.DeeP.Windows
 {
     /// <summary>
     /// Interaction logic for MainWindowPhysicsSim.xaml

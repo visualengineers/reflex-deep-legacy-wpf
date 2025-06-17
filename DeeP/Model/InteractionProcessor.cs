@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using PhysicsSimulation.Utilities;
 using Prism.Events;
@@ -7,7 +6,7 @@ using ReFlex.Core.Common.Components;
 using WPFPhysicsControlsLib.ViewModel;
 using Math = System.Math;
 
-namespace DeeP.Model
+namespace ReFlex.Apps.DeeP.Model
 {
     public class InteractionProcessor
     {

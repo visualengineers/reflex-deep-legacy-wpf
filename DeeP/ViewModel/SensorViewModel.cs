@@ -6,23 +6,23 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
 using System.Windows.Threading;
-using DeeP.Event;
 using DeeP.Properties;
 using EventHandling;
 using NLog;
 using Prism.Commands;
 using Prism.Events;
 using Prism.Mvvm;
+using ReFlex.Apps.DeeP.Event;
 using ReFlex.Core.Common.Components;
 using ReFlex.Core.Networking.Components;
 using ReFlex.Core.Networking.Event;
 using ReFlex.Core.Networking.Util;
 
-namespace DeeP.ViewModel
+namespace ReFlex.Apps.DeeP.ViewModel
 {
     public class SensorViewModel : BindableBase
     {
-        #region Properties
+        #region Fields
 
         private WebSocketClient _wsClient;
         private readonly IEventAggregator _eventAggregator;
@@ -31,6 +31,10 @@ namespace DeeP.ViewModel
         private bool _showTouchPoints = true;
 
         private readonly BackgroundWorker _connectionChecker;
+        
+        #endregion
+        
+        #region Properties
 
         public bool SensorConnected { get; private set; }
 

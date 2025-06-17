@@ -6,8 +6,7 @@ using System.Windows.Data;
 using System.Windows.Media;
 using NLog;
 
-
-namespace DeeP.Converter
+namespace ReFlex.Apps.DeeP.Converter
 {
     [ValueConversion(typeof(LogLevel), typeof(Color))]
     public class LoggingLevelToColorConverter : IValueConverter

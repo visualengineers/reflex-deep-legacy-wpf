@@ -1,11 +1,10 @@
-﻿
-using EventHandling;
+﻿using EventHandling;
 using NLog;
 using NLog.Targets;
 using Prism.Events;
 using Prism.Ioc;
 
-namespace DeeP.Util
+namespace ReFlex.Apps.DeeP.Util
 {
 
     [Target("InAppLogging")]

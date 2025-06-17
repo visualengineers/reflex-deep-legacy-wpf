@@ -2,13 +2,14 @@
 using System.Collections.ObjectModel;
 using System.Windows;
 using System.Windows.Threading;
-using DeeP.Event;
 using EventHandling;
 using NLog;
 using Prism.Events;
 using Prism.Mvvm;
+using ReFlex.Apps.DeeP.Event;
 using ReFlex.Core.Networking.Event;
-namespace DeeP.ViewModel
+
+namespace ReFlex.Apps.DeeP.ViewModel
 {
     public class TouchPointViewModel : BindableBase, IDisposable
     {

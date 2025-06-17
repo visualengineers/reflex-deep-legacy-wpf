@@ -1,8 +1,8 @@
 ﻿using System;
-using System.Windows.Data;
 using System.Windows;
+using System.Windows.Data;
 
-namespace DeeP.Converter
+namespace ReFlex.Apps.DeeP.Converter
 {
     public class DepthToVisibilityConverter : IValueConverter
     {

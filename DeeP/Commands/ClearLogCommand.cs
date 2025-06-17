@@ -1,7 +1,7 @@
-﻿using DeeP.ViewModel;
-using Prism.Commands;
+﻿using Prism.Commands;
+using ReFlex.Apps.DeeP.ViewModel;
 
-namespace DeeP.Commands
+namespace ReFlex.Apps.DeeP.Commands
 {
     /// <summary>
     /// 

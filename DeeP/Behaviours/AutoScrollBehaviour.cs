@@ -3,7 +3,7 @@ using System.Windows;
 using System.Windows.Controls;
 using Microsoft.Xaml.Behaviors;
 
-namespace DeeP.Behaviours
+namespace ReFlex.Apps.DeeP.Behaviours
 {
     //TODO: merge into UtilityLibrary
     /// <summary>

@@ -13,6 +13,7 @@ using Prism.Commands;
 using Prism.Events;
 using Prism.Mvvm;
 using ReFlex.Apps.DeeP.Event;
+using ReFlex.Apps.DeeP.Event.EventData;
 using ReFlex.Core.Common.Components;
 using ReFlex.Core.Networking.Components;
 using ReFlex.Core.Networking.Event;
@@ -29,7 +30,9 @@ namespace ReFlex.Apps.DeeP.ViewModel
         private static readonly Logger Logger = LogManager.GetCurrentClassLogger();
         private bool _reconnectPause;
         private bool _showTouchPoints = true;
-
+        
+        private Guid _connectionId;
+        
         private readonly BackgroundWorker _connectionChecker;
         
         #endregion
@@ -173,6 +176,8 @@ namespace ReFlex.Apps.DeeP.ViewModel
                 await StartSensorDelayed();
                 return false;
             }
+            
+            _connectionId = Guid.NewGuid();
 
             _wsClient = new WebSocketClient(
                 $"ws://{Settings.Default.ReFlexServerAddress}",
@@ -197,6 +202,7 @@ namespace ReFlex.Apps.DeeP.ViewModel
             Address = _wsClient.Address;
 
             RaisePropertyChanged(nameof(SensorConnected));
+            NotifyConnectionStatusChanged();
             RaisePropertyChanged(nameof(Address));
 
             Logger.Info($"Try to connect to ReFlex {Enum.GetName(typeof(NetworkInterface), _wsClient.Type)} server using address: {_wsClient.Address}. Connection successful: {SensorConnected}.");
@@ -233,6 +239,7 @@ namespace ReFlex.Apps.DeeP.ViewModel
 
             RaisePropertyChanged(nameof(SensorConnected));
             RaisePropertyChanged(nameof(Address));
+            NotifyConnectionStatusChanged();
 
             Logger.Info($"Close Connection to ReFlex server. IsConnected: {SensorConnected}.");
 
@@ -246,6 +253,23 @@ namespace ReFlex.Apps.DeeP.ViewModel
                 Logger.Warn($"{e.GetType().FullName} when disposing client.");
             }
         }
+
+        private void NotifyConnectionStatusChanged()
+        {
+            var status = SensorConnected ? "connected" : "disconnected";
+
+            var type = (_wsClient?.Type ?? NetworkInterface.None).ToString();
+
+            var evtData = new ConnectionStateEventData
+            {
+                Id = _connectionId,
+                IsConnected = SensorConnected,
+                Address = Address,
+                StateMsg = $"Connection to { type } with status {status}."
+            };
+            
+            _eventAggregator.GetEvent<ConnectionStateChangedEvent>().Publish(evtData);
+        } 
 
         #endregion
     }

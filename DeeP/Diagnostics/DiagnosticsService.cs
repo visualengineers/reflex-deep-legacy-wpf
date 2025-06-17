@@ -5,8 +5,12 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Media;
 using System.Windows.Threading;
+using EventHandling.Utilities;
 using NLog;
+using PhysicsSimulation.Events;
 using Prism.Events;
+using ReFlex.Apps.DeeP.Event;
+using ReFlex.Apps.DeeP.Event.EventData;
 
 namespace ReFlex.Apps.DeeP.Diagnostics;
 
@@ -48,37 +52,61 @@ public class DiagnosticsService
         Application.Current.Deactivated += OnDeactivated;
 
         Application.Current.DispatcherUnhandledException += OnUnhandledException;
-        
-        // _eventAggregator.GetEvent<ConnectionStateChangedEvent>().Subscribe(OnConnectionStateChanged);
-        // _eventAggregator.GetEvent<DataSetChangedEvent>().Subscribe(OnDataSetChanged);
-        // _eventAggregator.GetEvent<ImageComponentInitializationStateChangedEvent>().Subscribe(OnImageComponentInitializationChanged);
-        // _eventAggregator.GetEvent<ImageSourceLoadingFinishedEvent>().Subscribe(OnImageSourceLoadingFinished);
-        // _eventAggregator.GetEvent<PreviewImageLoadedEvent>().Subscribe(OnPreviewImageLoaded);
-        // _eventAggregator.GetEvent<RequestImageChangeEvent>().Subscribe(OnRequestImageChange);
-        // _eventAggregator.GetEvent<SettingsChangedEvent>().Subscribe(OnSettingsChanged);
-        // _eventAggregator.GetEvent<ViewChangedEvent>().Subscribe(OnViewChanged);
+
+        _eventAggregator.GetEvent<ConnectionStateChangedEvent>().Subscribe(OnConnectionStateChanged);
+        _eventAggregator.GetEvent<ResetRequestedEvent>().Subscribe(OnResetRequested);
+        _eventAggregator.GetEvent<SimulationPauseRequestedEvent>().Subscribe(OnSimulationPauseRequested);
+
+        _eventAggregator.GetEvent<ObjectsInitializedEvent>().Subscribe(OnObjectsInitialized);
+        _eventAggregator.GetEvent<ItemInfluenceChangedEvent>().Subscribe(OnItemInfluenceChanged);
+        _eventAggregator.GetEvent<ItemSizeChangedEvent>().Subscribe(OnItemSizeChanged);
+        _eventAggregator.GetEvent<InterTagForcesChangedEvent>().Subscribe(OnInterTagForcesChanged);
         
         _ = SendAppDataAsync(new("Application started."));
     }
 
-    private void OnViewChanged(string obj)
+    private void OnObjectsInitialized(bool obj)
     {
-        _ = SendAppDataAsync(new("View Changed", obj));
+        _ = SendAppDataAsync(new("PhysicsSim: Objects Initialized", 
+            obj.ToString()));
     }
 
-    private void OnPreviewImageLoaded(ImageSource obj)
+    private void OnInterTagForcesChanged(bool obj)
     {
-        _ = SendAppDataAsync(new("Preview Image Loaded", "", "",$"{obj.Width} x {obj.Height}"));
+        _ = SendAppDataAsync(new("PhysicsSim: Inter Tag Forces Changed", 
+            obj.ToString()));
     }
 
-    private void OnImageSourceLoadingFinished(string obj)
+    private void OnItemSizeChanged(ObjectType obj)
     {
-        _ = SendAppDataAsync(new("Image Loading Finished", obj));
+        _ = SendAppDataAsync(new("PhysicsSim: Item Size Changed", 
+            obj.ToString()));
     }
 
-    private void OnImageComponentInitializationChanged(bool obj)
+    private void OnItemInfluenceChanged(ObjectType obj)
     {
-        _ = SendAppDataAsync(new("Image Component Initialization Changed", $"{obj}"));
+        _ = SendAppDataAsync(new("PhysicsSim: Item Influence Changed", 
+            obj.ToString()));
+    }
+
+    private void OnSimulationPauseRequested(Tuple<bool, bool> obj)
+    {
+        _ = SendAppDataAsync(new("PhysicsSim: Simulation Pause Requested", 
+            obj.Item1.ToString(), obj.Item2.ToString()));
+    }
+
+    private void OnResetRequested(bool obj)
+    {
+        _ = SendAppDataAsync(new("PhysicsSim: Reset Requested", 
+            obj.ToString()));
+    }
+
+    private void OnConnectionStateChanged(ConnectionStateEventData obj)
+    {
+        var state = obj.IsConnected ? "Connected" : "Disconnected";
+        
+        _ = SendAppDataAsync(new("ConnectionState Changed", 
+            state, $"{obj.Id}", $"{obj.StateMsg}|{obj.Address}"));
     }
     
     private void OnUnhandledException(object sender, DispatcherUnhandledExceptionEventArgs e)
@@ -107,5 +135,14 @@ public class DiagnosticsService
         Application.Current.Deactivated -= OnDeactivated;
 
         Application.Current.DispatcherUnhandledException -= OnUnhandledException;
+        
+        _eventAggregator.GetEvent<ConnectionStateChangedEvent>().Unsubscribe(OnConnectionStateChanged);
+        _eventAggregator.GetEvent<ResetRequestedEvent>().Unsubscribe(OnResetRequested);
+        _eventAggregator.GetEvent<SimulationPauseRequestedEvent>().Unsubscribe(OnSimulationPauseRequested);
+
+        _eventAggregator.GetEvent<ObjectsInitializedEvent>().Unsubscribe(OnObjectsInitialized);
+        _eventAggregator.GetEvent<ItemInfluenceChangedEvent>().Unsubscribe(OnItemInfluenceChanged);
+        _eventAggregator.GetEvent<ItemSizeChangedEvent>().Unsubscribe(OnItemSizeChanged);
+        _eventAggregator.GetEvent<InterTagForcesChangedEvent>().Unsubscribe(OnInterTagForcesChanged);
     }
 }

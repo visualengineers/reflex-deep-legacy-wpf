@@ -58,7 +58,6 @@ public class DiagnosticsService
         _eventAggregator.GetEvent<SimulationPauseRequestedEvent>().Subscribe(OnSimulationPauseRequested);
 
         _eventAggregator.GetEvent<ObjectsInitializedEvent>().Subscribe(OnObjectsInitialized);
-        _eventAggregator.GetEvent<ItemInfluenceChangedEvent>().Subscribe(OnItemInfluenceChanged);
         _eventAggregator.GetEvent<ItemSizeChangedEvent>().Subscribe(OnItemSizeChanged);
         _eventAggregator.GetEvent<InterTagForcesChangedEvent>().Subscribe(OnInterTagForcesChanged);
         
@@ -82,13 +81,7 @@ public class DiagnosticsService
         _ = SendAppDataAsync(new("PhysicsSim: Item Size Changed", 
             obj.ToString()));
     }
-
-    private void OnItemInfluenceChanged(ObjectType obj)
-    {
-        _ = SendAppDataAsync(new("PhysicsSim: Item Influence Changed", 
-            obj.ToString()));
-    }
-
+    
     private void OnSimulationPauseRequested(Tuple<bool, bool> obj)
     {
         _ = SendAppDataAsync(new("PhysicsSim: Simulation Pause Requested", 
@@ -141,7 +134,6 @@ public class DiagnosticsService
         _eventAggregator.GetEvent<SimulationPauseRequestedEvent>().Unsubscribe(OnSimulationPauseRequested);
 
         _eventAggregator.GetEvent<ObjectsInitializedEvent>().Unsubscribe(OnObjectsInitialized);
-        _eventAggregator.GetEvent<ItemInfluenceChangedEvent>().Unsubscribe(OnItemInfluenceChanged);
         _eventAggregator.GetEvent<ItemSizeChangedEvent>().Unsubscribe(OnItemSizeChanged);
         _eventAggregator.GetEvent<InterTagForcesChangedEvent>().Unsubscribe(OnInterTagForcesChanged);
     }

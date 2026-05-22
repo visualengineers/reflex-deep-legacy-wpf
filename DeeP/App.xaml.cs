@@ -1,9 +1,5 @@
 ﻿using System.Windows;
 using DeeP.Properties;
-using DeeP.Util;
-using DeeP.ViewModel;
-using DeeP.Views;
-using DeeP.Windows;
 using DelVizDataStructure;
 using NLog;
 using PhysicsSimulation.Model;
@@ -11,11 +7,15 @@ using Prism.Events;
 using Prism.Ioc;
 using Prism.Mvvm;
 using Prism.Unity;
-using ReFlex.Core.Networking.Components;
+using ReFlex.Apps.DeeP.Diagnostics;
+using ReFlex.Apps.DeeP.Util;
+using ReFlex.Apps.DeeP.ViewModel;
+using ReFlex.Apps.DeeP.Views;
+using ReFlex.Apps.DeeP.Windows;
 using WPFPhysicsControlsLib.ViewModel;
 using WPFPhysicsControlsLib.Windows;
 
-namespace DeeP
+namespace ReFlex.Apps.DeeP
 {
     /// <summary>
     /// Interaction logic for App.xaml
@@ -25,6 +25,7 @@ namespace DeeP
         private DebugWindow _debug;
         private LogWindow _logWnd;
         private Window _mainAppWindow;
+        private DiagnosticsService _diagnosticsService;
 
         public static IContainerProvider AppContainer { get; private set; }
 
@@ -38,6 +39,8 @@ namespace DeeP
             containerRegistry.RegisterInstance(logger);
 
             containerRegistry.RegisterInstance(new LogViewModel(eventAggregator));
+            
+            containerRegistry.RegisterInstance(typeof(DiagnosticsClient), new DiagnosticsClient());
 
             logger.Info($"{GetType().FullName}: Registered LoggingTarget {typeof(InAppLoggingTarget).FullName}.");
 
@@ -101,6 +104,11 @@ namespace DeeP
             AppContainer = Container;
 
             _mainAppWindow = Container.Resolve<MainWindowPhysicsSim>();
+            
+            var evtAggregator = Container.Resolve<IEventAggregator>();
+            var client = Container.Resolve<DiagnosticsClient>();
+                                                                                            
+            _diagnosticsService = new DiagnosticsService(client, evtAggregator);
 
             _debug = new DebugWindow();
             _debug.Show();

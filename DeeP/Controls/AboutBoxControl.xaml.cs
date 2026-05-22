@@ -1,4 +1,4 @@
-﻿namespace DeeP.Controls
+﻿namespace ReFlex.Apps.DeeP.Controls
 {
     /// <summary>
     /// Interaction logic for AboutBoxControl.xaml

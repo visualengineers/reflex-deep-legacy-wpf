@@ -1,9 +1,9 @@
 ﻿<unity:PrismApplication
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:converter="clr-namespace:DeeP.Converter"
         xmlns:unity="http://prismlibrary.com/"
-        x:Class="DeeP.App">
+        xmlns:converter="clr-namespace:ReFlex.Apps.DeeP.Converter"
+        x:Class="ReFlex.Apps.DeeP.App">
     <Application.Resources>
 
         <ResourceDictionary>

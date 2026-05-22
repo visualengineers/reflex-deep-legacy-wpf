@@ -1,9 +1,9 @@
 ﻿using System.Windows;
 using System.Windows.Input;
-using DeeP.ViewModel;
 using NLog;
+using ReFlex.Apps.DeeP.ViewModel;
 
-namespace DeeP.Windows
+namespace ReFlex.Apps.DeeP.Windows
 {
     /// <summary>
     /// Interaction logic for LogWindow.xaml

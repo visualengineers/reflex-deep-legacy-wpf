@@ -1,11 +1,11 @@
 ﻿using System;
 using System.Windows;
-using DeeP.Windows;
 using NLog;
 using Prism.Commands;
 using Prism.Ioc;
+using ReFlex.Apps.DeeP.Windows;
 
-namespace DeeP.Commands
+namespace ReFlex.Apps.DeeP.Commands
 {
     public class LogWindowCommand : DelegateCommand<string>
     {

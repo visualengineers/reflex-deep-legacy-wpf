@@ -2,7 +2,7 @@
 using System.Windows;
 using System.Windows.Data;
 
-namespace DeeP.Converter
+namespace ReFlex.Apps.DeeP.Converter
 {
     [ValueConversion(typeof(bool), typeof(Visibility), ParameterType = typeof(string))]
     public class BooleanToVisibilityConverter : IValueConverter

@@ -1,26 +1,17 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.ComponentModel;
-using System.Linq;
 using System.Reflection;
 using System.Windows;
-using DeeP.Commands;
-using DeeP.Model;
 using EventHandling;
 using FastDrawingUtilityLibrary;
-using DeeP.Properties;
-using DeeP.Util;
-using PhysicsSimulation;
-using PhysicsSimulation.Utilities;
 using Prism.Events;
-using Prism.Ioc;
 using Prism.Mvvm;
+using ReFlex.Apps.DeeP.Commands;
+using ReFlex.Apps.DeeP.Model;
 using ReFlex.Core.Networking.Event;
 using WPFPhysicsControlsLib.ViewModel;
-using ViewModelLocator = WPFPhysicsControlsLib.Utilities.ViewModelLocator;
 
-namespace DeeP.ViewModel
+namespace ReFlex.Apps.DeeP.ViewModel
 {
     public class FlexiWallViewModel : BindableBase, IFlexiWallApplicationActions
     {

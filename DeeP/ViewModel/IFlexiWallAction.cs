@@ -1,6 +1,6 @@
 ﻿using System.Windows;
 
-namespace DeeP.ViewModel
+namespace ReFlex.Apps.DeeP.ViewModel
 {
     public interface IFlexiWallAction
     {

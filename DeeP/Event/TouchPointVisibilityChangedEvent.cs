@@ -1,6 +1,6 @@
 ﻿using Prism.Events;
 
-namespace DeeP.Event
+namespace ReFlex.Apps.DeeP.Event
 {
     public class TouchPointVisibilityChangedEvent : PubSubEvent<bool>
     {

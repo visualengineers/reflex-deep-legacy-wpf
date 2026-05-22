@@ -29,9 +29,10 @@
     <PackageIcon>Resources\icon\FlexiWallWPF_icon_03.png</PackageIcon>
     <AssemblyVersion>2.3.0.0</AssemblyVersion>
     <FileVersion>2.3.0.0</FileVersion>
+    <RootNamespace>ReFlex.Apps.DeeP</RootNamespace>
   </PropertyGroup>
   <PropertyGroup>
-    <StartupObject>DeeP.App</StartupObject>
+    <StartupObject>ReFlex.Apps.DeeP.App</StartupObject>
   </PropertyGroup>
   <PropertyGroup>
     <TargetZone>LocalIntranet</TargetZone>

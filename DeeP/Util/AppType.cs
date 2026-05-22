@@ -1,4 +1,4 @@
-﻿namespace DeeP.Util
+﻿namespace ReFlex.Apps.DeeP.Util
 {
     public enum AppType : short
     {

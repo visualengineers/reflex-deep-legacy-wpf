@@ -1,11 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using DeeP.ViewModel;
 using NLog;
-using NLog.Fluent;
 using Prism.Commands;
+using ReFlex.Apps.DeeP.ViewModel;
 
-namespace DeeP.Commands
+namespace ReFlex.Apps.DeeP.Commands
 {
     /// <summary>
     /// Command handling actions regarding different window activities:

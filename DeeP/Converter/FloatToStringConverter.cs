@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Windows.Data;
 
-namespace DeeP.Converter
+namespace ReFlex.Apps.DeeP.Converter
 {
     [ValueConversion(typeof(float), typeof(string), ParameterType = typeof(int))]
     public class FloatToStringConverter : IValueConverter

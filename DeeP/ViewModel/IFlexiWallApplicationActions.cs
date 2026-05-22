@@ -1,4 +1,4 @@
-﻿namespace DeeP.ViewModel
+﻿namespace ReFlex.Apps.DeeP.ViewModel
 {
     public interface IFlexiWallApplicationActions
     {

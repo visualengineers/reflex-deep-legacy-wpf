@@ -1,0 +1,81 @@
+﻿name: Release
+
+on:
+  push:
+    tags:
+      - 'v*.*.*'
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: Release tag to publish, e.g. v1.0.0
+        required: true
+        type: string
+
+permissions:
+  contents: write
+
+jobs:
+  electron-windows:
+    name: Build app and attach to draft release
+    runs-on: windows-latest
+    env:
+      RELEASE_TAG: ${{ github.event_name == 'workflow_dispatch' && inputs.tag || github.ref_name }}
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event_name == 'workflow_dispatch' && inputs.tag || github.ref }}
+          fetch-depth: 0
+
+      - name: Setup .NET SDK
+        uses: actions/setup-dotnet@v4
+        with:
+          global-json-file: global.json
+
+      - name: Restore
+        run: dotnet restore DeeP.sln
+
+      - name: create and validate draft GitHub release 
+        shell: pwsh
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          if ($env:RELEASE_TAG -notlike 'v*.*.*') {
+            throw "Release tag '$env:RELEASE_TAG' does not match the expected v*.*.* pattern."
+          }
+          # retrieve version from DeeP.csProj.ApplicationVersion (without the BuildNumber)
+          $appVersion = ???
+          $tagVersion = $env:RELEASE_TAG -replace '^v', ''
+
+          if ($appVersion -ne $tagVersion) {
+            throw "app version '$appVersion' does not match release tag '$env:RELEASE_TAG'."
+          }
+
+          $releaseJson = gh release view $env:RELEASE_TAG --json isDraft,url 2>$null
+
+          if ($LASTEXITCODE -eq 0) {
+            $release = $releaseJson | ConvertFrom-Json
+
+            if (-not $release.isDraft) {
+              throw "Release '$env:RELEASE_TAG' already exists and is not a draft: $($release.url)"
+            }
+
+            Write-Host "Draft release '$env:RELEASE_TAG' already exists: $($release.url)"
+            exit 0
+          }
+
+          gh release create $env:RELEASE_TAG `
+            --draft `
+            --title $env:RELEASE_TAG `
+            --notes "Draft release for $env:RELEASE_TAG. App artifacts are uploaded by the release workflow."
+          
+      - name: Rebuild solution
+        run: |
+          dotnet clean DeeP.sln --configuration Release
+          dotnet build DeeP.sln --configuration Release --no-restore
+
+      - name: Upload to GitHub release draft
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: # upload binaries to GitHub release draft (as zip-File)

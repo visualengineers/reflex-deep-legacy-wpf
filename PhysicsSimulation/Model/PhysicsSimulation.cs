@@ -137,6 +137,8 @@ namespace PhysicsSimulation.Model
             {
                 Tags.Clear();
                 Objects.Clear();
+                Associations.Clear();
+                RelevantAssociations.Clear();
                 InitEntities();
                 InitTags();
                 InitAssociations();

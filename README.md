@@ -32,6 +32,32 @@ edit `App.config` (in project) or `DeeP.dll.config` (in compiled project) and ed
     </setting>
 ```
 
+## Enable Diagnostics Data
+
+Sending diagnostics data is disabled by default - to enable it edit `App.config` (in project) or `DeeP.dll.config` (in compiled project) and edit the lines:
+
+``` xml
+
+    <setting name="SendDiagnosticData" serializeAs="String">
+        <value>False</value>
+    </setting>
+    <setting name="DiagnosticsAddress" serializeAs="String">
+        <value>http://localhost:4302/log/appData</value>
+    </setting>
+```
+
+## Keyboard Shortcuts
+
+| Shortcut               | Description                                                                                       |
+|------------------------|---------------------------------------------------------------------------------------------------|
+| `F1`                   | Toggle Help Panel                                                                                 |
+| `F2`                   | Toggle Log Window                                                                                 |
+| `F10`                  | Toggle Properties Panel                                                                           |
+| `F11`                  | Minimize Main Window                                                                              |
+| `F12`                  | Toggle Fullscreen                                                                                 |
+| `Esc`                  | Close the application                                                                             |
+
+
 ## ReFlex usage
 
 * the source files from [ReFlex Framework][reflex-url] are copied into `library/src/Core/Common` and `library/src/Core/Networking` (from [Version 0.9.8](https://github.com/visualengineers/reflex/releases/tag/v0.9.8))

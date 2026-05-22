@@ -24,11 +24,11 @@
     <UseWindowsForms>true</UseWindowsForms>
     <UseWPF>true</UseWPF>
     <ImportWindowsDesktopTargets>true</ImportWindowsDesktopTargets>
-    <Version>2.3.0</Version>
+    <Version>2.4.0</Version>
     <Authors>Mathias Müller</Authors>
     <PackageIcon>Resources\icon\FlexiWallWPF_icon_03.png</PackageIcon>
-    <AssemblyVersion>2.3.0.0</AssemblyVersion>
-    <FileVersion>2.3.0.0</FileVersion>
+    <AssemblyVersion>2.4.0.0</AssemblyVersion>
+    <FileVersion>2.4.0.0</FileVersion>
     <RootNamespace>ReFlex.Apps.DeeP</RootNamespace>
   </PropertyGroup>
   <PropertyGroup>

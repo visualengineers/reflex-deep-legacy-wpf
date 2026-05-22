@@ -21,6 +21,6 @@
     <PackageReference Include="Unity.Abstractions" Version="5.11.7" />
     <PackageReference Include="Unity.Container" Version="5.11.11" />
     <PackageReference Include="System.Runtime.CompilerServices.Unsafe" Version="6.1.2" />
-    <PackageReference Include="System.Configuration.ConfigurationManager" Version="7.0.0" />
+    <PackageReference Include="System.Configuration.ConfigurationManager" Version="10.0.8" />
   </ItemGroup>
 </Project>

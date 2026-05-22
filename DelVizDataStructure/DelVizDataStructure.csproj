@@ -32,13 +32,6 @@
     <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Update="Service References\DelVizWebService\Reference.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
     <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <ItemGroup>
@@ -48,48 +41,6 @@
     <Content Include="resources\delviz_visitems.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <None Update="Service References\DelVizWebService\DelVizDataStructure.DelVizWebService.Bundle.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Update="Service References\DelVizWebService\DelVizDataStructure.DelVizWebService.BundleAndCategoryItem.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Update="Service References\DelVizWebService\DelVizDataStructure.DelVizWebService.Category.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Update="Service References\DelVizWebService\DelVizDataStructure.DelVizWebService.HistoryItem.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Update="Service References\DelVizWebService\DelVizDataStructure.DelVizWebService.Tag.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Update="Service References\DelVizWebService\DelVizDataStructure.DelVizWebService.TagBundleCategoryItem.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Update="Service References\DelVizWebService\DelVizDataStructure.DelVizWebService.TagFrequencyItem.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Update="Service References\DelVizWebService\DelVizDataStructure.DelVizWebService.User.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Update="Service References\DelVizWebService\DelVizDataStructure.DelVizWebService.Visualization.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Update="Service References\DelVizWebService\DelVizDataStructure.DelVizWebService.VisualizationPreview.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Update="Service References\DelVizWebService\DelVizWebService.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Update="Service References\DelVizWebService\DelVizWebService1.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Update="Service References\DelVizWebService\DelVizWebService2.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Update="Service References\DelVizWebService\DelVizWebService3.xsd">
-      <SubType>Designer</SubType>
-    </None>
     <None Remove="Resources\images_vic_group_small\36trucs.social-computing.com_01.png" />
     <Content Include="resources\images_vic_group_small\36trucs.social-computing.com_01.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
@@ -3822,24 +3773,15 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
-    <WCFMetadataStorage Include="Service References\DelVizWebService\" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Update="Service References\DelVizWebService\Reference.svcmap">
-      <Generator>WCF Proxy Generator</Generator>
-      <LastGenOutput>Reference.cs</LastGenOutput>
-    </None>
-  </ItemGroup>
-  <ItemGroup>
     <PackageReference Include="Microsoft.CSharp" Version="4.7.0" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.4" />
-    <PackageReference Include="System.Configuration.ConfigurationManager" Version="7.0.0" />
-    <PackageReference Include="System.ServiceModel.Primitives" Version="6.0.0" />
-    <PackageReference Include="System.ServiceModel.Http" Version="6.0.0" />
+    <PackageReference Include="System.Configuration.ConfigurationManager" Version="10.0.8" />
+    <PackageReference Include="System.ServiceModel.Primitives" Version="10.0.652802" />
+    <PackageReference Include="System.ServiceModel.Http" Version="10.0.652802" />
     <PackageReference Include="System.ServiceModel.Duplex" Version="6.0.0" />
-    <PackageReference Include="System.ServiceModel.NetTcp" Version="6.0.0" />
+    <PackageReference Include="System.ServiceModel.NetTcp" Version="10.0.652802" />
     <PackageReference Include="System.ServiceModel.Security" Version="6.0.0" />
-    <PackageReference Include="System.ServiceModel.Federation" Version="6.0.0" />
+    <PackageReference Include="System.ServiceModel.Federation" Version="10.0.652802" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="NLog" Version="6.1.3" />

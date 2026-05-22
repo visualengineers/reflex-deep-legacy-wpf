@@ -29,9 +29,13 @@ namespace ReFlex.Apps.DeeP.Windows
 
             Logger.Log(LogLevel.Info, "Physics Simulation started");
 
-            Closing += delegate { ((FlexiWallViewModel) DataContext).SaveSettingsCmd.Execute("Save"); };
+            Closing += delegate
+            {
+                Logger.Log(LogLevel.Info, "Application Main Window Closing.");
+                ((FlexiWallViewModel) DataContext).SaveSettingsCmd.Execute("Save");
+            };
 
-            Closed += delegate { Application.Current.Shutdown(); };
+            Closed += delegate { Application.Current.Shutdown(0); };
         }
 
         private void MoveWindow(object sender, MouseEventArgs e)

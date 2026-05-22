@@ -102,7 +102,7 @@
       <Value Profile="(Default)">ReFlex</Value>
     </Setting>
     <Setting Name="SendDiagnosticData" Type="System.Boolean" Scope="User">
-      <Value Profile="(Default)">True</Value>
+      <Value Profile="(Default)">False</Value>
     </Setting>
     <Setting Name="DiagnosticsAddress" Type="System.String" Scope="User">
       <Value Profile="(Default)">http://localhost:4302/log/appData</Value>

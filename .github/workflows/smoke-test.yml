@@ -1,0 +1,35 @@
+name: Smoke Test
+
+on:
+  push:
+  workflow_dispatch:
+
+jobs:
+  smoke-test:
+    name: Build and launch DeeP
+    runs-on: windows-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup .NET SDK
+        uses: actions/setup-dotnet@v4
+        with:
+          global-json-file: global.json
+
+      - name: Restore
+        run: dotnet restore DeeP.sln
+
+      - name: Rebuild solution
+        run: |
+          dotnet clean DeeP.sln --configuration Release
+          dotnet build DeeP.sln --configuration Release --no-restore
+
+      - name: Launch application smoke test
+        shell: pwsh
+        run: >
+          ./.github/scripts/SmokeTest.ps1
+          -ExePath "DeeP/bin/Release/net10.0-windows/DeeP.exe"
+          -SecondsToObserve 10
+          -ShutdownTimeoutSeconds 10

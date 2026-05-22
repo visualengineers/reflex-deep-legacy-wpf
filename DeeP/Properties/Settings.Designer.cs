@@ -420,7 +420,7 @@ namespace DeeP.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
         public bool SendDiagnosticData {
             get {
                 return ((bool)(this["SendDiagnosticData"]));

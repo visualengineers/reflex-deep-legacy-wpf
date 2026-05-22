@@ -1,5 +1,8 @@
 # DeeP_LegacyWPF (ReFlex)
 
+[![Tests][test-ci-shield]][test-ci-url]
+[![Release][release-ci-shield]][release-ci-url]
+
 Conversion of the legacy WPF application for xCoAx 2015 Paper "Data Exploration on Elastic Projections" to use ReFlex framework
 
 * Version: 2.3.0.0
@@ -10,7 +13,7 @@ Conversion of the legacy WPF application for xCoAx 2015 Paper "Data Exploration 
 
 ## Prerequisites
 
-.NET 10.0 SDK [Download](https://dotnet.microsoft.com/en-us/download/dotnet/10.0)
+.NET 10.0 SDK [Download][net-download]
 
 ## Change WebSocket Address
 
@@ -31,4 +34,14 @@ edit `App.config` (in project) or `DeeP.dll.config` (in compiled project) and ed
 
 ## ReFlex usage
 
-* the source files from [ReFlex Framework](https://github.com/visualengineers/reflex) are copied into `library/src/Core/Common` and `library/src/Core/Networking` (from [Version 0.9.8](https://github.com/visualengineers/reflex/releases/tag/v0.9.8))
+* the source files from [ReFlex Framework][reflex-url] are copied into `library/src/Core/Common` and `library/src/Core/Networking` (from [Version 0.9.8](https://github.com/visualengineers/reflex/releases/tag/v0.9.8))
+
+<!-- MARKDOWN LINKS & IMAGES -->
+<!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
+
+[net-download]: https://dotnet.microsoft.com/en-us/download/dotnet/10.0
+[reflex-url]: https://github.com/visualengineers/reflex
+[release-ci-shield]: https://github.com/visualengineers/reflex-deep-legacy-wpf/actions/workflows/release.yml/badge.svg
+[release-ci-url]: https://github.com/visualengineers/reflex-deep-legacy-wpf/actions/workflows/release.yml
+[test-ci-shield]: https://github.com/visualengineers/reflex-deep-legacy-wpf/actions/workflows/smoke-test.yml/badge.svg
+[test-ci-url]: https://github.com/visualengineers/reflex-deep-legacy-wpf/actions/workflows/smoke-test.yml

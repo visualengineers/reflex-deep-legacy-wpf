@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Globalization;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
@@ -77,7 +78,7 @@ namespace WPFPhysicsControlsLib.ViewModel
             ImgSource.Freeze();
             RaisePropertyChanged(nameof(ImgSource));
 
-            ModifyItemInfluenceCmd = new DelegateCommand<double?>(ModifyItemInfluence);
+            ModifyItemInfluenceCmd = new DelegateCommand<object>(ModifyItemInfluence);
 
             if (obj.AssociatedCategories == null || obj.AssociatedCategories.Length < Categories.Length)
                 return;
@@ -171,12 +172,12 @@ namespace WPFPhysicsControlsLib.ViewModel
             UpdateTagInfluences();
         }
 
-        public void ModifyItemInfluence(double? amount)
+        public void ModifyItemInfluence(object amount)
         {
-            if (amount == null)
+            if (!ConvertInfluenceExtension.TryGetInfluenceAmount(amount, out var influenceAmount))
                 return;
 
-            _itemSelection = (float)amount;
+            _itemSelection = (float)influenceAmount;
             _itemSelection = _itemSelection < 0
                 ? 0
                 : _itemSelection > PhysicsSimulationProperties.MaxUserInfluenceValue

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Windows.Input;
 using System.Windows.Media;
 using DelVizDataStructure;
@@ -82,7 +83,7 @@ namespace WPFPhysicsControlsLib.ViewModel
             Tag = obj;
 
 
-            ModifyTagAttractionCmd = new DelegateCommand<double?>(ModifyItemInfluence);
+            ModifyTagAttractionCmd = new DelegateCommand<object>(ModifyItemInfluence);
 
             UpdateBaseSize(ObjectType.Tag);
             SizeModifier = 1.0f;
@@ -154,12 +155,12 @@ namespace WPFPhysicsControlsLib.ViewModel
             RaisePropertyChanged(nameof(ObjectOpacity));
         }
 
-        public void ModifyItemInfluence(double? amount)
+        public void ModifyItemInfluence(object amount)
         {
-            if (amount == null)
+            if (!ConvertInfluenceExtension.TryGetInfluenceAmount(amount, out var influenceAmount))
                 return;
 
-            UserDefinedInfluence = (float)(_influenceModifier + amount);
+            UserDefinedInfluence = (float)(_influenceModifier + influenceAmount);
             var clamp = PhysicsSimulationProperties.MaxUserInfluenceValue;
             UserDefinedInfluence = UserDefinedInfluence < -clamp
                 ? -clamp
@@ -176,4 +177,3 @@ namespace WPFPhysicsControlsLib.ViewModel
         }
     }
 }
-

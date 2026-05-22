@@ -2,6 +2,6 @@
 {
     public interface IModifyItemInfluence
     {
-        void ModifyItemInfluence(double? amount);
+        void ModifyItemInfluence(object amount);
     }
 }

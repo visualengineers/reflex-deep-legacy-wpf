@@ -36,7 +36,7 @@ jobs:
       - name: Restore
         run: dotnet restore DeeP.sln
 
-      - name: create and validate draft GitHub release 
+      - name: Create and validate draft GitHub release
         shell: pwsh
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -44,8 +44,20 @@ jobs:
           if ($env:RELEASE_TAG -notlike 'v*.*.*') {
             throw "Release tag '$env:RELEASE_TAG' does not match the expected v*.*.* pattern."
           }
-          # retrieve version from DeeP.csProj.ApplicationVersion (without the BuildNumber)
-          $appVersion = ???
+
+          $project = [xml](Get-Content -Path "DeeP/DeeP.csproj" -Raw)
+          $applicationVersionNode = $project.SelectSingleNode("//ApplicationVersion")
+          if ($null -eq $applicationVersionNode) {
+            throw "ApplicationVersion was not found in DeeP/DeeP.csproj."
+          }
+
+          $applicationVersion = $applicationVersionNode.InnerText
+          $versionSegments = $applicationVersion -split '\.'
+          if ($versionSegments.Length -lt 3) {
+            throw "ApplicationVersion '$applicationVersion' does not contain a major.minor.patch version."
+          }
+
+          $appVersion = $versionSegments[0..2] -join '.'
           $tagVersion = $env:RELEASE_TAG -replace '^v', ''
 
           if ($appVersion -ne $tagVersion) {
@@ -69,13 +81,25 @@ jobs:
             --draft `
             --title $env:RELEASE_TAG `
             --notes "Draft release for $env:RELEASE_TAG. App artifacts are uploaded by the release workflow."
-          
+
       - name: Rebuild solution
         run: |
           dotnet clean DeeP.sln --configuration Release
           dotnet build DeeP.sln --configuration Release --no-restore
 
       - name: Upload to GitHub release draft
+        shell: pwsh
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: # upload binaries to GitHub release draft (as zip-File)
+        run: |
+          $outputDir = "DeeP/bin/Release/net10.0-windows"
+          if (-not (Test-Path -Path $outputDir -PathType Container)) {
+            throw "Build output directory '$outputDir' does not exist."
+          }
+
+          New-Item -ItemType Directory -Path "artifacts" -Force | Out-Null
+          $artifactPath = "artifacts/DeeP-$env:RELEASE_TAG-windows.zip"
+
+          Compress-Archive -Path "$outputDir/*" -DestinationPath $artifactPath -Force
+
+          gh release upload $env:RELEASE_TAG $artifactPath --clobber

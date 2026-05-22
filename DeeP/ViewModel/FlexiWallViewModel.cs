@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.ObjectModel;
+using System.Diagnostics;
 using System.Reflection;
 using System.Windows;
+using System.Windows.Media;
 using EventHandling;
 using FastDrawingUtilityLibrary;
 using Prism.Events;
@@ -13,7 +15,7 @@ using WPFPhysicsControlsLib.ViewModel;
 
 namespace ReFlex.Apps.DeeP.ViewModel
 {
-    public class FlexiWallViewModel : BindableBase, IFlexiWallApplicationActions
+    public class FlexiWallViewModel : BindableBase, IFlexiWallApplicationActions, IDisposable
     {
         #region Fields
 
@@ -25,10 +27,13 @@ namespace ReFlex.Apps.DeeP.ViewModel
         private bool _isFullScreen;
         private double _currFps;
         private const double Tolerance = 0.01;
+        private ulong _currFrames = 0;
         private ulong _frameCounter;
         private double _totalFps;
         private double _elapsedTime;
         private bool _showExtrema;
+        
+        private readonly Stopwatch _watch = Stopwatch.StartNew();
 
         #endregion
 
@@ -71,7 +76,6 @@ namespace ReFlex.Apps.DeeP.ViewModel
             {
                 _currFps = value;
                 _totalFps += value;
-                _frameCounter++;
                 // only update every 4 Frames
                 if (_frameCounter % 4 == 0)
                 {
@@ -130,13 +134,13 @@ namespace ReFlex.Apps.DeeP.ViewModel
             // Apply Default Values
             SaveSettingsCmd.Execute("Apply");
 
-            // TODO: attach to websockets...
-            // ((MSKinectSensor) KinectVm.Sensor).VectorField.ExtremaUpdated += ManualUpdate;
-
             eventAggregator.GetEvent<InteractionsUpdatedEvent>().Subscribe(ManualUpdate);
 
             _logVm = logVm;
             _processor = processor;
+            
+            CompositionTarget.Rendering += OnRendering;
+            _watch.Restart();
         }
 
         private void ManualUpdate(InteractionsReceivedEventArgs args)
@@ -145,13 +149,7 @@ namespace ReFlex.Apps.DeeP.ViewModel
         }
 
         #endregion
-
-        #region events
         
-        // public event EventHandler<UpdateExtremumListEventArgs> ExtremaUpdated;
-
-        #endregion
-       
 
         #region Implementation of IFlexiWallApplicationActions
 
@@ -194,5 +192,28 @@ namespace ReFlex.Apps.DeeP.ViewModel
         }
 
         #endregion
+        
+        public void Dispose()
+        {
+            CompositionTarget.Rendering -= OnRendering;
+        }
+
+        
+        
+        private void OnRendering(object? sender, EventArgs e)
+        {
+            _frameCounter++;
+            _currFrames++;
+            
+            RaisePropertyChanged(nameof(TotalFrames));
+            
+            if (_watch.Elapsed.TotalSeconds >= 1)
+            {
+                CurrFps = _currFrames / _watch.Elapsed.TotalSeconds;
+                _currFrames = 0;
+                TotalTime += _watch.Elapsed.TotalSeconds;
+                _watch.Restart();
+            }
+        }
     }
 }

@@ -28,13 +28,13 @@ namespace WPFPhysicsControlsLib.ViewModel
 
         private readonly IEventAggregator _eventAggregator;
 
-        public List<SimulatedContentItemVm> Objects { get; protected set; }
+        public ObservableCollection<SimulatedContentItemVm> Objects { get; protected set; }
 
-        public List<SimulatedTagVm> Tags { get; protected set; }
+        public ObservableCollection<SimulatedTagVm> Tags { get; protected set; }
 
-        public List<SimulatedTagVm> ActiveTags { get; protected set; }
+        public ObservableCollection<SimulatedTagVm> ActiveTags { get; protected set; }
 
-        public List<SimulatedContentItemVm> SelectedObjects { get; protected set; }
+        public ObservableCollection<SimulatedContentItemVm> SelectedObjects { get; protected set; }
 
         public ObservableCollection<Vector2D> CurrentlyDetectedTouchPoints { get; } = new ObservableCollection<Vector2D>();
 
@@ -76,10 +76,10 @@ namespace WPFPhysicsControlsLib.ViewModel
             _eventAggregator.GetEvent<ItemInfluenceResetRequestedEvent>()
                 .Subscribe(ResetItemInfluences);
 
-            Objects = new List<SimulatedContentItemVm>();
-            Tags = new List<SimulatedTagVm>();
-            SelectedObjects = new List<SimulatedContentItemVm>();
-            ActiveTags = new List<SimulatedTagVm>();
+            Objects = new ObservableCollection<SimulatedContentItemVm>();
+            Tags = new ObservableCollection<SimulatedTagVm>();
+            SelectedObjects = new ObservableCollection<SimulatedContentItemVm>();
+            ActiveTags = new ObservableCollection<SimulatedTagVm>();
             _sim = new PhysicsSimulator();
             _sim.Reset();
 
@@ -123,7 +123,7 @@ namespace WPFPhysicsControlsLib.ViewModel
 
 
             //TODO: not needed anymore, grab positions directly from Simulation ???
-            Objects.ForEach(vm =>
+            foreach (var vm in Objects)
             {
                 vm.UpdateTranslation();
                 vm.UpdateVisualization();
@@ -138,7 +138,7 @@ namespace WPFPhysicsControlsLib.ViewModel
                         detailsSelection = vm;
                     }
                 }
-            });
+            }
 
             var remObj = SelectedObjects.Where(vm => !selObj.Contains(vm)).ToList();
             var addObj = selObj.Where(vm => !SelectedObjects.Contains(vm)).ToList();
@@ -154,7 +154,7 @@ namespace WPFPhysicsControlsLib.ViewModel
 
             var selTags = new List<SimulatedTagVm>();
 
-            Tags.ForEach(vm =>
+            foreach (var vm in Tags)
             {
                 vm.UpdateTranslation();
                 vm.UpdateVisualization();
@@ -162,7 +162,7 @@ namespace WPFPhysicsControlsLib.ViewModel
                 {
                     selTags.Add(vm);
                 }
-            });
+            }
 
             var remTags = ActiveTags.Where(vm => !selTags.Contains(vm)).ToList();
             var addTags = selTags.Where(vm => !ActiveTags.Contains(vm)).ToList();
@@ -186,12 +186,20 @@ namespace WPFPhysicsControlsLib.ViewModel
         {
             Objects.Clear();
             Tags.Clear();
+            SelectedObjects.Clear();
+            ActiveTags.Clear();
+
             _sim.Objects.ForEach(obj => Objects.Add(new SimulatedContentItemVm(obj)));
 
             foreach (var tag in _sim.Tags)
             {
                 Tags.Add(new SimulatedTagVm(tag));
             }
+
+            RaisePropertyChanged(nameof(Objects));
+            RaisePropertyChanged(nameof(Tags));
+            RaisePropertyChanged(nameof(SelectedObjects));
+            RaisePropertyChanged(nameof(ActiveTags));
         }
 
         private void ObjectsInitialized(bool completeRefresh)

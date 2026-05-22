@@ -3,14 +3,14 @@
 Conversion of the legacy WPF application for xCoAx 2015 Paper "Data Exploration on Elastic Projections" to use ReFlex framework
 
 * Version: 2.3.0.0
-* ReFlex-Version: 0.9.8
+* ReFlex-Version: 0.9.8 oder neuer
 * Websocket-Address (default, can be configured in `appsettings`): `ws://127.0.0.1:40001/ReFlex`
 
 ![App Screenshot](docs/img/example.png)
 
 ## Prerequisites
 
-.NET 6.0 [Download](https://dotnet.microsoft.com/en-us/download/dotnet/6.0)
+.NET 10.0 SDK [Download](https://dotnet.microsoft.com/en-us/download/dotnet/10.0)
 
 ## Change WebSocket Address
 

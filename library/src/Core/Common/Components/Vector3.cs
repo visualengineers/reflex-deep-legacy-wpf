@@ -1,5 +1,4 @@
-﻿using System;
-using ReFlex.Core.Common.Interfaces;
+﻿using ReFlex.Core.Common.Interfaces;
 
 namespace ReFlex.Core.Common.Components
 {
@@ -38,14 +37,24 @@ namespace ReFlex.Core.Common.Components
         public float Z { get; set; }
 
         /// <summary>
-        /// Returns true if ... is valid.
+        /// Returns true if the vector is valid.
         /// </summary>
         /// <value>
-        ///   <c>true</c> if this point is valid; otherwise, <c>false</c>.
+        ///   <c>true</c> if this vector is valid; otherwise, <c>false</c>.
         /// </value>
         /// <inheritdoc />
         public bool IsValid { get; set; } = true;
 
+        /// <summary>
+        /// Returns true if this vector is filtered.
+        /// </summary>
+        /// <value>
+        ///   <c>true</c> if this vector is filtered; otherwise, <c>false</c>.
+        /// </value>
+        /// <inheritdoc />
+        public bool IsFiltered { get; set; } = true;
+
+        
         /// <summary>
         /// Initializes a new instance of the <see cref="Vector3"/> class.
         /// </summary>
